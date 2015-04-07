@@ -1,36 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_light"
     android:orientation="horizontal" >
 
-    
-    <ToggleButton 
-        android:id="@+id/tb1"
-        android:layout_width="80dp"
-        android:layout_height="150dp"
-        android:textOff=""
-        android:textOn=""
-        android:background="@drawable/tooth"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="167dp"
-        android:layout_marginTop="143dp"
-        android:clickable="true"
-        />
+    <LinearLayout
+        android:layout_weight="16"
+        android:orientation="vertical" >
 
-    <ToggleButton
-        android:id="@+id/tb2"
-        android:layout_width="80dp"
-        android:layout_height="150dp"
-        android:textOff=""
-        android:textOn=""
-        android:background="@drawable/tooth"
-        android:layout_alignTop="@+id/tb1"
-        android:layout_marginLeft="172dp"
-        android:clickable="true"
-        android:layout_toRightOf="@+id/tb1" />
+        <ToggleButton
+            android:id="@+id/tb1"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
 
+        <ToggleButton
+            android:id="@+id/tb2"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignTop="@+id/tb1"
+            android:layout_marginLeft="172dp"
+            android:layout_toRightOf="@+id/tb1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
 
-</RelativeLayout>
+        <ToggleButton
+            android:id="@+id/tb3"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb4"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb5"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb6"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb7"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb8"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb9"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb10"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb11"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb12"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb13"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb14"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb15"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb16"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="167dp"
+            android:layout_marginTop="143dp"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+    </LinearLayout>
+
+</LinearLayout>
