@@ -25,17 +25,17 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
  
         switch (index) {
         case 0:
-            return BottomFragment1.newInstance(0, "Missing Teeth");
+            return BottomFragment1.newInstance(0, PROBLEM_1);
         case 1:
-        	return BottomFragment2.newInstance(1, "Primary Decay");
+        	return BottomFragment2.newInstance(1, PROBLEM_2);
         case 2:
-        	return BottomFragment3.newInstance(2, "Existing Fillings");
+        	return BottomFragment3.newInstance(2, PROBLEM_3);
         case 3:
-        	return BottomFragment4.newInstance(3, "Existing Root Canal Fillings");
+        	return BottomFragment4.newInstance(3, PROBLEM_4);
         case 4:
-        	return BottomFragment5.newInstance(4, "Existing Crowns/Bridges");
+        	return BottomFragment5.newInstance(4, PROBLEM_5);
         case 5:
-        	return BottomFragment6.newInstance(5, "Dental Implants");
+        	return BottomFragment6.newInstance(5, PROBLEM_6);
         }
  
         return null;

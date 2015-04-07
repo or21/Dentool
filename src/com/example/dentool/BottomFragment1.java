@@ -15,7 +15,7 @@ public class BottomFragment1 extends Fragment implements OnClickListener {
 	int page;
 	Patient patient;
 	ImageButton b1;
-	ImageButton b2;
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -23,10 +23,9 @@ public class BottomFragment1 extends Fragment implements OnClickListener {
 		View view = inflater.inflate(R.layout.bottom_fragment_1, container, false);
 
 		b1 = (ImageButton) view.findViewById(R.id.imageButton1);
-		b2 = (ImageButton) view.findViewById(R.id.imageButton2);
 
 		b1.setOnClickListener(this);
-		b2.setOnClickListener(this);
+		
 		return view;
 	}
 
@@ -53,26 +52,17 @@ public class BottomFragment1 extends Fragment implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case (R.id.imageButton1):
-			if (!NewPatient.patient.getTeeth()[0].getExisting()) {
-				v.setVisibility(View.VISIBLE);
-				NewPatient.patient.getTeeth()[0].setExisting(true);
-			} else {
-				v.setVisibility(View.INVISIBLE);
-				NewPatient.patient.getTeeth()[0].setExisting(false);
-			}
-		case (R.id.imageButton2):
-			if (!NewPatient.patient.getTeeth()[1].getExisting()) {
-				v.setVisibility(View.VISIBLE);
-				NewPatient.patient.getTeeth()[1].setExisting(true);
-			} else {
-				v.setVisibility(View.INVISIBLE);
-				NewPatient.patient.getTeeth()[1].setExisting(false);
-			}
+		if (!NewPatient.patient.getTeeth()[0].getExisting()){
+			v.setBackgroundResource(R.drawable.button_selected);
+			NewPatient.patient.getTeeth()[0].setExisting(false);
+	}
+		else{
+			v.setBackgroundResource(R.drawable.button_normal);
+			NewPatient.patient.getTeeth()[0].setExisting(true);
+		}
 		}
 
-	}
+	
 
 
 }

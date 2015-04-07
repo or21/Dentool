@@ -13,19 +13,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="167dp"
         android:layout_marginTop="143dp"
-        android:clickable="true"
+
         android:background="@drawable/image_button_states"
         android:src="@drawable/tooth" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="80dp"
-        android:layout_height="150dp"
-        android:layout_alignTop="@+id/imageButton1"
-        android:layout_marginLeft="172dp"
-        android:background="@drawable/image_button_states"
-        android:clickable="true"
-        android:layout_toRightOf="@+id/imageButton1"
-        android:src="@drawable/tooth" />
 
 </RelativeLayout>
