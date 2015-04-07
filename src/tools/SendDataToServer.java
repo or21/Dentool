@@ -16,13 +16,11 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
-import android.R.transition;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 
 public class SendDataToServer extends AsyncTask<String, Void, Boolean>{
-
 
 	private static final String POST = "POST";
 
