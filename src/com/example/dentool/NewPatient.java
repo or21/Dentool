@@ -35,8 +35,8 @@ public class NewPatient extends Activity implements OnClickListener {
 			
 			@Override
 			public void onClick(View v) {
-//				Intent intent = new Intent(context,Main.class);
-//				startActivity(intent);
+				Intent intent = new Intent(context,Main.class);
+				startActivity(intent);
 			}
 		});
 		Button send = (Button) findViewById(R.id.sendInfo);
