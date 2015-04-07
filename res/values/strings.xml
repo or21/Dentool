@@ -9,5 +9,6 @@
     <string name="id">ID</string>
     <string name="headline">DenTool For Dentists</string>
     <string name="Send">Send</string>
+    <string name="title_activity_horizontal_list_view">HorizontalListView</string>
 
 </resources>

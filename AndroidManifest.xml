@@ -14,20 +14,24 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:windowSoftInputMode="stateHidden"
             android:name=".NewPatient"
             android:label="@string/title_activity_main"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-         <activity
+        <activity
             android:name=".Main"
             android:label="@string/title_activity_main"
             android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name="tools.HorizontalListView"
+            android:label="@string/title_activity_horizontal_list_view" >
         </activity>
     </application>
 
