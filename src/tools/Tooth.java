@@ -14,8 +14,8 @@ public class Tooth {
 	private State implants;
 	
 	// Constructor
-	public	Tooth() {
-		this.setExisting(false);
+	public Tooth() {
+		this.setExisting(true);
 		this.setDecay(new Boolean[5]);
 		this.setFillings(State.NULL);
 		this.setRoot(State.NULL);

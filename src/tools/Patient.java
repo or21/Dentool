@@ -31,4 +31,12 @@ public class Patient {
 		this.uid = uid;
 	}
 	
+	public Tooth[] getTeeth() {
+		return teeth;
+	}
+
+	public void setTeeth(Tooth[] teeth) {
+		this.teeth = teeth;
+	}
+	
 }
