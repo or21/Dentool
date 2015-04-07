@@ -16,4 +16,4 @@ public class BottomFragment5 extends Fragment{
     	return view;
     }
 	
-}
+}//

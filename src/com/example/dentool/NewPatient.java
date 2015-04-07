@@ -12,3 +12,4 @@ public class NewPatient extends Activity {
 		setContentView(R.layout.newpatient_layout);
 	}
 }
+//

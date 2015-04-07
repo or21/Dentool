@@ -17,3 +17,4 @@ public class BottomFragment6 extends Fragment{
     }
 	
 }
+//
