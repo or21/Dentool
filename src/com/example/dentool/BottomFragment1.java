@@ -2,29 +2,33 @@ package com.example.dentool;
 
 import tools.Patient;
 import android.support.v4.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
-public class BottomFragment1 extends Fragment implements OnClickListener {
+public class BottomFragment1 extends Fragment implements OnCheckedChangeListener {
 	String title;
 	int page;
 	Patient patient;
-	ImageButton b1;
-
+	ToggleButton b1;
+	ToggleButton b2;
+	TextView t1;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.bottom_fragment_1, container, false);
 
-		b1 = (ImageButton) view.findViewById(R.id.imageButton1);
-
-		b1.setOnClickListener(this);
+		b1 = (ToggleButton) view.findViewById(R.id.tb1);
+		b2 = (ToggleButton) view.findViewById(R.id.tb2);
+		b1.setOnCheckedChangeListener(this);
+		b2.setOnCheckedChangeListener(this);
 		
 		return view;
 	}
@@ -51,18 +55,27 @@ public class BottomFragment1 extends Fragment implements OnClickListener {
 	}
 
 	@Override
-	public void onClick(View v) {
-		if (!NewPatient.patient.getTeeth()[0].getExisting()){
-			v.setBackgroundResource(R.drawable.button_selected);
-			NewPatient.patient.getTeeth()[0].setExisting(false);
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		
+		switch (buttonView.getId()) {
+		case (R.id.tb1):
+			if (!NewPatient.patient.getTeeth()[0].getExisting()) {
+				buttonView.setBackgroundResource(R.drawable.tooth);
+				NewPatient.patient.getTeeth()[0].setExisting(true);
+			} else {
+				buttonView.setBackgroundResource(Color.TRANSPARENT);
+				NewPatient.patient.getTeeth()[0].setExisting(false);
+			}
+		case (R.id.tb2):
+			if (!NewPatient.patient.getTeeth()[1].getExisting()) {
+				buttonView.setBackgroundResource(R.drawable.tooth);
+				NewPatient.patient.getTeeth()[1].setExisting(true);
+			} else {
+				buttonView.setBackgroundResource(Color.TRANSPARENT);
+				NewPatient.patient.getTeeth()[1].setExisting(false);
+			}
+		}
 	}
-		else{
-			v.setBackgroundResource(R.drawable.button_normal);
-			NewPatient.patient.getTeeth()[0].setExisting(true);
-		}
-		}
-
-	
 
 
 }
