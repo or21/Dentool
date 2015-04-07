@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class BottomFragment1 extends Fragment{
+public class BottomFragment6 extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	
-    	View view = inflater.inflate(R.layout.bottom_fragment_1, container, false);
+    	View view = inflater.inflate(R.layout.bottom_fragment_6, container, false);
     	
     	return view;
     }
