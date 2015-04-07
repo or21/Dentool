@@ -6,17 +6,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class NewPatient extends Activity {
-<<<<<<< HEAD
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.newpatient_layout);
-=======
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.newpatient_layout);
 	}
 
 	@Override
@@ -33,7 +27,7 @@ public class NewPatient extends Activity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		return super.onOptionsItemSelected(item);
->>>>>>> origin/master
+
 	}
 }
 //
