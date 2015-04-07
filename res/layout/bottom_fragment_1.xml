@@ -3,20 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_light"
-    android:orientation="horizontal" >
+    android:weightSum="2"
+    android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_weight="16"
-        android:orientation="vertical" >
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:weightSum="16" >
 
         <ToggleButton
             android:id="@+id/tb1"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -25,10 +28,8 @@
         <ToggleButton
             android:id="@+id/tb2"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignTop="@+id/tb1"
-            android:layout_marginLeft="172dp"
-            android:layout_toRightOf="@+id/tb1"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -37,11 +38,8 @@
         <ToggleButton
             android:id="@+id/tb3"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -50,11 +48,8 @@
         <ToggleButton
             android:id="@+id/tb4"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -63,11 +58,8 @@
         <ToggleButton
             android:id="@+id/tb5"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -76,11 +68,8 @@
         <ToggleButton
             android:id="@+id/tb6"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -89,11 +78,8 @@
         <ToggleButton
             android:id="@+id/tb7"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -102,11 +88,8 @@
         <ToggleButton
             android:id="@+id/tb8"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -115,11 +98,8 @@
         <ToggleButton
             android:id="@+id/tb9"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -128,11 +108,8 @@
         <ToggleButton
             android:id="@+id/tb10"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -141,11 +118,8 @@
         <ToggleButton
             android:id="@+id/tb11"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -154,11 +128,8 @@
         <ToggleButton
             android:id="@+id/tb12"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -167,11 +138,8 @@
         <ToggleButton
             android:id="@+id/tb13"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -180,11 +148,8 @@
         <ToggleButton
             android:id="@+id/tb14"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -193,11 +158,8 @@
         <ToggleButton
             android:id="@+id/tb15"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
@@ -206,11 +168,178 @@
         <ToggleButton
             android:id="@+id/tb16"
             android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="143dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:weightSum="16" >
+
+        <ToggleButton
+            android:id="@+id/tb17"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb18"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb19"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb20"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb21"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb22"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb23"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb24"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb25"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb26"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb27"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb28"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb29"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb30"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb31"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/tooth"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/tb32"
+            android:layout_width="10dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
