@@ -18,12 +18,8 @@
         <ToggleButton
             android:id="@+id/tb1"
             android:layout_width="10dp"
-<<<<<<< HEAD
-            android:layout_height="15dp"
-=======
             android:layout_height="150dp"
             android:layout_weight="1"
->>>>>>> origin/master
             android:background="@drawable/tooth"
             android:clickable="true"
             android:textOff=""
