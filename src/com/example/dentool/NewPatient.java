@@ -15,7 +15,7 @@ public class NewPatient extends Activity implements OnClickListener {
 	private static final CharSequence USERNAME = "Please enter patient full name";
 	private static final CharSequence ID = "Please enter patient ID";
 	private Context context;
-	static Patient patient;
+	public static Patient patient;
 	EditText userName;
 	EditText id;
 
