@@ -17,7 +17,10 @@ public class Main extends FragmentActivity {
 
 		// Initialize the ViewPager and set an adapter
 		ViewPager pager = (ViewPager) findViewById(R.id.Vpager);
-		pager.setAdapter(new TabsPagerAdapter(getSupportFragmentManager()));
+		TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
+		pager.setAdapter(adapter);
+		pager.setOffscreenPageLimit(6);
+		
 
 		// Bind the tabs to the ViewPager
 		PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
