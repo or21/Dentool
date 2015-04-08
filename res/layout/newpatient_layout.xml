@@ -18,7 +18,19 @@
             android:inputType="numberPassword" />
 
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/firstName"
+            android:layout_width="550dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/lastName"
+            android:textSize="30sp"
+            android:layout_alignLeft="@+id/id"
+            android:layout_alignStart="@+id/id"
+            android:layout_marginBottom="55dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+        
+         <EditText
+            android:id="@+id/lastName"
             android:layout_width="550dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/id"
@@ -30,28 +42,44 @@
             android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/userNameBox"
+            android:id="@+id/userFirstNameBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/userName"
+            android:layout_alignBottom="@+id/firstName"
             android:layout_below="@+id/HeadLine"
             android:layout_marginTop="10dp"
             android:layout_marginRight="145dp"
             android:layout_marginEnd="145dp"
             android:textSize="30sp"
-            android:layout_toLeftOf="@+id/userName"
-            android:layout_toStartOf="@+id/userName"
-            android:text="@string/user_name" />
+            android:layout_toLeftOf="@+id/firstName"
+            android:layout_toStartOf="@+id/firstName"
+            android:text="@string/first_name" />
+        
+        <TextView
+            android:id="@+id/userLastNameBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/lastName"
+            android:layout_below="@+id/userFirstName"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="145dp"
+            android:layout_marginEnd="145dp"
+            android:textSize="30sp"
+            android:layout_toLeftOf="@+id/lastName"
+            android:layout_toStartOf="@+id/lastName"
+            android:text="@string/last_name" />
 
         <TextView
             android:id="@+id/idBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/id"
-            android:textSize="30sp"
             android:layout_alignBottom="@+id/id"
-            android:layout_alignLeft="@+id/userNameBox"
-            android:layout_alignStart="@+id/userNameBox"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="145dp"
+            android:layout_marginEnd="145dp"
+            android:textSize="30sp"
+            android:layout_toLeftOf="@+id/id"
+            android:layout_toStartOf="@+id/id"
             android:text="@string/id" />
 
         <TextView
@@ -73,8 +101,8 @@
             android:layout_below="@+id/idBox"
             android:layout_marginTop="76dp"
             android:layout_centerHorizontal="true"
-            android:layout_toRightOf="@+id/userNameBox"
-			android:layout_toEndOf="@+id/userNameBox"
+            android:layout_toRightOf="@+id/userFirstNameBox"
+			android:layout_toEndOf="@+id/userFirstNameBox"
             android:text="@string/Send" />
 
         <Button

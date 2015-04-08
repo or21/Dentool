@@ -11,44 +11,80 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONObject;
+import org.json.JSONArray;
 
-import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.dentool.NewPatient;
+
 public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 
-	private static final String HOST = "10.10.1.25";
-	private final String urlUploadFile = HOST + "/upload_file";
+	private static final String HOST = "http://10.10.1.25:5000";
+	private final String urlUploadFile = HOST + "/upload_file/";
 	private final String urlNewSession = HOST + "/";
 	private String url;
 	
-	private Activity activity;
 	private List<NameValuePair> requestParams;
 	private InputStream is;
 	private String line;
 	private String json;
-
-	private JSONObject jsonObj;
-
-	public SendDataToServer(Activity activity, List<NameValuePair> params, String method) {
-		this.activity = activity;
-		this.requestParams = params;
-	}
+	private String firstName;
+	private String lastName;
+	private NewPatient newPatientActivity;
+	private int requestType;
 	
-	public SendDataToServer(int target, String patient_id, List<NameValuePair> params) {
-		if (target == 0) {
-			url = urlUploadFile + patient_id;
-		} else if (target == 1) {
-			url = urlNewSession + patient_id;
+	private ProgressDialog progress;
+	
+	private JSONArray jsonArray = null;
+	
+	/**
+	 * Constructor - SendDataToServer creates the HTTP POST requests to the server
+	 * params:
+	 * 	requestType - determines whether save_and_send or upload_file methods would
+	 * 					be accessed.
+	 * 	patientId - this patient's id number
+	 * 	firstName - this patient's first name
+	 * 	lastName - this patient's last name
+	 * 	params - the JSON array of teeth, in case upload_file in invoked. Will be
+	 * 					ignored if requestType == 1
+	 * 	activity - caller activity instance
+	 */
+	public SendDataToServer(int requestType, String patientId, String firstName,
+			String lastName, List<NameValuePair> params, NewPatient activity) {
+		// Set empty firstName and lastName if non are given
+		if (firstName == null) {
+			this.firstName = "";
+		} else {
+			this.firstName = firstName;
 		}
+		
+		if (lastName == null) {
+			this.lastName = "";
+		} else {
+			this.lastName = lastName;
+		}		
+		
+		if (requestType == 0) {
+			url = urlUploadFile + patientId;
+		} else if (requestType == 1) {
+			// TODO: Add some test to ensure no empty first and last name are given?
+			url = urlNewSession + patientId + "?first_name=" + this.firstName + "&last_name=" + this.lastName;
+		}
+		
+		this.newPatientActivity = activity;
 		this.requestParams = params;
+		this.requestType = requestType;
+		this.progress = new ProgressDialog(newPatientActivity.getApplicationContext());
 	}
 
 	@Override
 	protected void onPreExecute() {
-		super.onPreExecute();
+		try {
+			progress = ProgressDialog.show(newPatientActivity.getApplicationContext(), "", "Server request in progress", true);
+		} catch (Exception e)
+		{}
 	}
 
 	@Override
@@ -77,19 +113,43 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 				line = reader.readLine();
 			}
 			is.close();
+			
 			json = sb.toString();
+			if (json.length() > 0)
+				jsonArray = new JSONArray(json);
+
 			
-			jsonObj = new JSONObject(json);
-			
-			// TODO: read message and check if success
-			
-			return requestStatus;
-			
+			int status = httpResponse.getStatusLine().getStatusCode();
+			if (status == 200) {
+				requestStatus = true;
+			}			
 		} catch (Exception e) {
 			Log.d("DenTool", "Request failed");
 			e.printStackTrace();
 		}
-		return null;
+		return requestStatus;
+	}
+	
+	@Override
+	protected void onProgressUpdate(Void... values) {
+		// TODO Auto-generated method stub
+		super.onProgressUpdate(values);
+	}
+	
+	@Override
+	protected void onPostExecute(Boolean requestStatus) {
+		if (requestStatus && requestType == 1) {
+			if (jsonArray != null) {
+				newPatientActivity.setAlreadyVisited(true);
+				newPatientActivity.populateTeethArray(jsonArray);
+			} else {
+				newPatientActivity.setAlreadyVisited(false);
+			}
+			
+		}
+		if (progress.isShowing()) {
+			progress.dismiss();
+		}
 	}
 
 }
