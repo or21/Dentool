@@ -27,7 +27,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         case 0:
             return BottomFragment1.newInstance(0, PROBLEM_1);
         case 1:
-        	return BottomFragment2_part_1.newInstance(1, PROBLEM_2);
+        	return BottomFragment2.newInstance(1, PROBLEM_2);
         case 2:
         	return BottomFragment3.newInstance(2, PROBLEM_3);
         case 3:
