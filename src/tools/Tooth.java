@@ -21,6 +21,10 @@ public class Tooth {
 		this.setRoot(State.NULL);
 		this.setCrowns(State.NULL);
 		this.setImplants(State.NULL);
+		
+		for (int i = 0; i < 5; i++) {
+			this.decay[i] = false;
+		}
 	}
 
 
