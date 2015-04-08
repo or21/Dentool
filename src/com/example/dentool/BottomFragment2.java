@@ -2,7 +2,6 @@ package com.example.dentool;
 
 import java.util.ArrayList;
 
-import tools.DecayAdapter;
 import tools.HorizontalLayout;
 import tools.Tooth;
 import android.support.v4.app.Fragment;
@@ -35,12 +34,9 @@ public class BottomFragment2 extends Fragment{
 			bottom.add(NewPatient.patient.getTeeth()[i + 8]);
 		}
 		
-		DecayAdapter topAdapter = new DecayAdapter(getActivity(), R.layout.decay_layout, top, R.drawable.decay_001);
-		topList.generateLayout(topAdapter);
+		topList.generateDrawingLayout(0);
 		
-		DecayAdapter bottomAdapter = new DecayAdapter(getActivity(), R.layout.decay_layout, bottom, R.drawable.decay_001);
-	
-		bottomList.generateLayout(bottomAdapter);
+		bottomList.generateDrawingLayout(1);
 		
     	return view;
     }

@@ -1,5 +1,10 @@
 package com.example.dentool;
 
+import java.util.ArrayList;
+
+import tools.DecayAdapter;
+import tools.HorizontalLayout;
+import tools.Tooth;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,12 +15,30 @@ public class BottomFragment3 extends Fragment{
 	
 	String title;
 	int page;
+	private HorizontalLayout topList;
+	private HorizontalLayout bottomList;
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	
     	View view = inflater.inflate(R.layout.bottom_fragment_3, container, false);
+    	
+//		topList = (HorizontalLayout) view.findViewById(R.id.top_mouth_decay);
+//		bottomList = (HorizontalLayout) view.findViewById(R.id.bottom_mouth_decay);
+//		
+//		ArrayList<Tooth> top = new ArrayList<Tooth>();
+//		ArrayList<Tooth> bottom = new ArrayList<Tooth>();
+//		for (int i = 0; i < 8; i++) {
+//			top.add(NewPatient.patient.getTeeth()[i]);
+//			bottom.add(NewPatient.patient.getTeeth()[i + 8]);
+//		}
+//		
+//		DecayAdapter topAdapter = new DecayAdapter(getActivity(), R.layout.decay_layout, top, R.drawable.decay_001);
+//		topList.generateLayout(topAdapter);
+//		
+//		DecayAdapter bottomAdapter = new DecayAdapter(getActivity(), R.layout.decay_layout, bottom, R.drawable.decay_001);
+//		bottomList.generateLayout(bottomAdapter);
     	
     	return view;
     }
