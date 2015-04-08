@@ -75,6 +75,5 @@
             android:textColor="@android:color/transparent" />
         
     </RelativeLayout>
-    
+    </LinearLayout>
         
-</LinearLayout>

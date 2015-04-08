@@ -31,7 +31,5 @@ public class HorizontalLayout extends LinearLayout {
 			child.setLayoutParams(params);
 			this.addView(child);
 		}
-		
 	}
-
 }

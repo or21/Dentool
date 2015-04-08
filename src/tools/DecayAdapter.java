@@ -104,10 +104,10 @@ public class DecayAdapter extends ArrayAdapter<Tooth> implements OnClickListener
 		case (R.id.middleButton): {
 			if (status[0]){
 				v.setBackgroundResource(R.drawable.button_normal);
-				middleButton.setTextColor(Color.TRANSPARENT);
+				v.setBackgroundResource(Color.TRANSPARENT);
 			} else {
 				v.setBackgroundResource(R.drawable.button_selected);
-				middleButton.setTextColor(Color.RED);
+				v.setBackgroundColor(Color.RED);
 			}
 			NewPatient.patient.getTeeth()[index].setDecay(
 					new Boolean[] {!status[0], status[1], status[2], status[3],status[4]});
@@ -116,10 +116,8 @@ public class DecayAdapter extends ArrayAdapter<Tooth> implements OnClickListener
 		case (R.id.topButton): {
 			if (status[1]){
 				v.setBackgroundResource(R.drawable.button_normal);
-				topButton.setTextColor(Color.TRANSPARENT);
 			} else {
-				v.setBackgroundResource(R.drawable.button_selected);
-				topButton.setTextColor(Color.RED);
+				v.setBackgroundResource(Color.TRANSPARENT);
 			}
 			NewPatient.patient.getTeeth()[index].setDecay(
 					new Boolean[] {status[0], !status[1], status[2], status[3],status[4]});
@@ -128,10 +126,8 @@ public class DecayAdapter extends ArrayAdapter<Tooth> implements OnClickListener
 		case (R.id.rightButton): {
 			if (status[2]){
 				v.setBackgroundResource(R.drawable.button_normal);
-				rightButton.setTextColor(Color.TRANSPARENT);
 			} else {
-				v.setBackgroundResource(R.drawable.button_selected);
-				rightButton.setTextColor(Color.RED);
+				v.setBackgroundResource(Color.TRANSPARENT);
 			}
 			NewPatient.patient.getTeeth()[index].setDecay(
 					new Boolean[] {status[0], status[1], !status[2], status[3],status[4]});
@@ -140,10 +136,8 @@ public class DecayAdapter extends ArrayAdapter<Tooth> implements OnClickListener
 		case (R.id.bottomButton): {
 			if (status[3]){
 				v.setBackgroundResource(R.drawable.button_normal);
-				bottomButton.setTextColor(Color.TRANSPARENT);
 			} else {
-				v.setBackgroundResource(R.drawable.button_selected);
-				bottomButton.setTextColor(Color.RED);
+				v.setBackgroundResource(Color.TRANSPARENT);
 			}
 			NewPatient.patient.getTeeth()[index].setDecay(
 					new Boolean[] {status[0], status[1], status[2], !status[3],status[4]});
@@ -151,11 +145,9 @@ public class DecayAdapter extends ArrayAdapter<Tooth> implements OnClickListener
 		}
 		case (R.id.leftButton): {
 			if (status[4]){
-				v.setBackgroundResource(R.drawable.button_selected);
-				leftButton.setTextColor(Color.TRANSPARENT);
+				v.setBackgroundResource(R.drawable.button_normal);
 			} else {
-				v.setBackgroundResource(R.drawable.button_selected);
-				leftButton.setTextColor(Color.RED);
+				v.setBackgroundResource(Color.TRANSPARENT);
 			}
 			NewPatient.patient.getTeeth()[index].setDecay(
 					new Boolean[] {status[0], status[1], status[2], status[3], !status[4]});
