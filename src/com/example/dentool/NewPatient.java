@@ -1,10 +1,17 @@
 package com.example.dentool;
 
+import java.util.ArrayList;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 import tools.Patient;
+import tools.SendDataToServer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -67,5 +74,12 @@ public class NewPatient extends Activity implements OnClickListener {
 		String uid = data;
 		Patient newPatient = new Patient(newUserName, uid);
 		return newPatient;
+	}
+	
+	public void serverTestMethod(View v) {
+		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+//		params.add(new BasicNameValuePair("patient_id", "20033"));
+		new SendDataToServer(1, "20033", "", "", params, this).execute();
+		Log.d("Hi it's working!", "Hurray");
 	}
 }
