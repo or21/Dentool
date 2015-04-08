@@ -33,16 +33,16 @@ public class MissingTeethAdapter extends ArrayAdapter<Tooth>{
 		}
     }
 
-	private int pictureId;
+	private int index;
 	
-	 public MissingTeethAdapter(Context context, int textViewResourceId, ArrayList<Tooth> items, int pictureId) {
+	 public MissingTeethAdapter(Context context, int textViewResourceId, ArrayList<Tooth> items, int index) {
 	        super(context, textViewResourceId, items);
-	        this.pictureId = pictureId;
+	        this.index = index;
 	    }
 
 	    public View getView(final int position, View convertView, ViewGroup parent) {
 	    	final ViewHolder viewHolder;
-	    	
+	    	final int newpos = position + (index * 16);
 	    	if (convertView == null) {
 	            convertView = LayoutInflater.from(this.getContext())
 	            .inflate(R.layout.missing_teeth_layout, parent, false);
@@ -50,13 +50,13 @@ public class MissingTeethAdapter extends ArrayAdapter<Tooth>{
 	            viewHolder = new ViewHolder();
 	            
 	            viewHolder.tb1 = (ToggleButton) convertView.findViewById(R.id.tb1);
-	            
+	            viewHolder.tb1.setBackgroundResource(CrownTeethAdapter.nullArray[newpos]);
 	            viewHolder.tb1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 					
 					@Override
 					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 						if (!NewPatient.patient.getTeeth()[position].getExisting()) {
-				    		viewHolder.tb1.setBackgroundResource(pictureId);
+							viewHolder.tb1.setBackgroundResource(CrownTeethAdapter.nullArray[newpos]);
 			        		NewPatient.patient.getTeeth()[position].setExisting(true);
 			        	} else {
 			        		viewHolder.tb1.setBackgroundResource(Color.TRANSPARENT);

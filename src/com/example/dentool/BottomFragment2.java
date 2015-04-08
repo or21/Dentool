@@ -49,8 +49,6 @@ public class BottomFragment2 extends Fragment{
         title = getArguments().getString("title");
     }
     
-    
-	
 	//set a title for this fragment
 	public static BottomFragment2 newInstance(int page, String title){
 		BottomFragment2 fragment = new BottomFragment2();

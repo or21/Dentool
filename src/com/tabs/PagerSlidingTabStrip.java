@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Typeface;
@@ -57,10 +58,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 	private Paint rectPaint;
 	private Paint dividerPaint;
-
-	private int indicatorColor = 0xFF666666;
+	
+	private int indicatorColor = Color.parseColor("#FFBB33");
 	private int underlineColor = 0x1A000000;
-	private int dividerColor = 0x1A000000;
+	private int dividerColor = Color.parseColor("#D9E8F4");
 
 	private boolean shouldExpand = false;
 	private boolean textAllCaps = true;
@@ -72,10 +73,11 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	private int tabPadding = 24;
 	private int dividerWidth = 1;
 
-	private int tabTextSize = 12;
-	private int tabTextColor = 0xFF666666;
+	private int tabTextSize = 21;
+	private int tabTextColor = 0xFFFFFFFF;
 	private Typeface tabTypeface = null;
-	private int tabTypefaceStyle = Typeface.BOLD;
+//	private int tabTypefaceStyle = Typeface.BOLD;
+	private int tabTypefaceStyle = 0;
 
 	private int lastScrollX = 0;
 
@@ -260,7 +262,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 				// pre-ICS-build
 				if (textAllCaps) {
 					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-						tab.setAllCaps(true);
+//						tab.setAllCaps(true);
 					} else {
 						tab.setText(tab.getText().toString().toUpperCase(locale));
 					}

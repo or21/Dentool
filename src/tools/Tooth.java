@@ -9,8 +9,8 @@ public class Tooth {
 	private Boolean existing;
 	private Boolean[] decay;
 	private State[] fillings;
-	private State root;
 	private State crowns;
+	private State root;
 	private State implants;
 	
 	// Constructor

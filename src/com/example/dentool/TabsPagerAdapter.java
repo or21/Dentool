@@ -12,8 +12,8 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     private String PROBLEM_1 = "Missing Teeth";
     private String PROBLEM_2 = "Primary Decay";
     private String PROBLEM_3 = "Existing Fillings";
-	private String PROBLEM_4 = "Existing Root Canal Fillings";
-	private String PROBLEM_5 = "Existing Crowns/Bridges";
+	private String PROBLEM_4 = "Existing Crowns/Bridges";
+	private String PROBLEM_5 = "Existing Root Canal Fillings";
 	private String PROBLEM_6 = "Dental Implants";
  
     public TabsPagerAdapter(FragmentManager fm) {

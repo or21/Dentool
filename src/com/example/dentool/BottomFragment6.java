@@ -1,5 +1,11 @@
 package com.example.dentool;
 
+import java.util.ArrayList;
+
+import tools.HorizontalLayout;
+import tools.ImplantsAdapter;
+import tools.RootTeethAdapter;
+import tools.Tooth;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,13 +16,29 @@ public class BottomFragment6 extends Fragment{
 	
 	String title;
 	int page;
+	private HorizontalLayout topList;
+	private HorizontalLayout bottomList;
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	
     	View view = inflater.inflate(R.layout.bottom_fragment_6, container, false);
-    	
+    	topList = (HorizontalLayout) view.findViewById(R.id.top_mouth_implants);
+		bottomList = (HorizontalLayout) view.findViewById(R.id.bottom_mouth_implants);
+		
+		ArrayList<Tooth> top = new ArrayList<Tooth>();
+		ArrayList<Tooth> bottom = new ArrayList<Tooth>();
+		for (int i = 0; i < 16; i++) {
+			top.add(NewPatient.patient.getTeeth()[i]);
+			bottom.add(NewPatient.patient.getTeeth()[i + 16]);
+		}
+		
+		ImplantsAdapter topAdapter = new ImplantsAdapter(getActivity(), R.layout.implants_layout, top, 0);
+		topList.generateLayout(topAdapter);
+		
+		ImplantsAdapter bottomAdapter = new ImplantsAdapter(getActivity(), R.layout.implants_layout, bottom, 1);
+		bottomList.generateLayout(bottomAdapter);
     	return view;
     }
     

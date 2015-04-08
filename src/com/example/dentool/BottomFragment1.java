@@ -34,10 +34,10 @@ public class BottomFragment1 extends Fragment {
 			bottom.add(NewPatient.patient.getTeeth()[i + 16]);
 		}
 		
-		MissingTeethAdapter topAdapter = new MissingTeethAdapter(getActivity(), R.layout.missing_teeth_layout, top, R.drawable.tooth);
+		MissingTeethAdapter topAdapter = new MissingTeethAdapter(getActivity(), R.layout.missing_teeth_layout, top, 0);
 		topList.generateLayout(topAdapter);
 		
-		MissingTeethAdapter bottomAdapter = new MissingTeethAdapter(getActivity(), R.layout.missing_teeth_layout, bottom, R.drawable.tooth);
+		MissingTeethAdapter bottomAdapter = new MissingTeethAdapter(getActivity(), R.layout.missing_teeth_layout, bottom, 1);
 		bottomList.generateLayout(bottomAdapter);
 
 		return view;

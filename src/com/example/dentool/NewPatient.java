@@ -1,9 +1,12 @@
 package com.example.dentool;
 
 import tools.Patient;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,6 +26,11 @@ public class NewPatient extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.newpatient_layout);
+		
+		ActionBar bar = getActionBar();
+		bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0096EA")));
+		bar.setTitle("");
+		bar.setIcon(R.drawable.logo);
 		
 		context = getApplicationContext();
 		
