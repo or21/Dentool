@@ -13,9 +13,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 
-import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.example.dentool.NewPatient;
 
 public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 
@@ -30,10 +32,12 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 	private String json;
 	private String firstName;
 	private String lastName;
-	private Activity activity;
+	private NewPatient newPatientActivity;
 	private int requestType;
 	
-	private JSONArray jsonArray;
+	private ProgressDialog progress;
+	
+	private JSONArray jsonArray = null;
 	
 	/**
 	 * Constructor - SendDataToServer creates the HTTP POST requests to the server
@@ -48,7 +52,7 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 	 * 	activity - caller activity instance
 	 */
 	public SendDataToServer(int requestType, String patientId, String firstName,
-			String lastName, List<NameValuePair> params, Activity activity) {
+			String lastName, List<NameValuePair> params, NewPatient activity) {
 		// Set empty firstName and lastName if non are given
 		if (firstName == null) {
 			this.firstName = "";
@@ -69,15 +73,16 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 			url = urlNewSession + patientId + "?first_name=" + this.firstName + "&last_name=" + this.lastName;
 		}
 		
-		this.activity = activity;
+		this.newPatientActivity = activity;
 		this.requestParams = params;
 		this.requestType = requestType;
+		this.progress = new ProgressDialog(newPatientActivity.getApplicationContext());
 	}
 
 	@Override
 	protected void onPreExecute() {
-		super.onPreExecute();
-		// TODO: Run on UI Thread Spinner
+		progress.setMessage("Server request in progress");
+		progress.show();
 	}
 
 	@Override
@@ -107,12 +112,10 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 			}
 			is.close();
 			
-			// If requestType == 0 (invoked upload_file), create the jsonArray
-			if (requestType == 0) {
-				json = sb.toString();
-			
+			json = sb.toString();
+			if (json.length() > 0)
 				jsonArray = new JSONArray(json);
-			}
+
 			
 			int status = httpResponse.getStatusLine().getStatusCode();
 			if (status == 200) {
@@ -127,8 +130,16 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 	
 	@Override
 	protected void onPostExecute(Boolean requestStatus) {
-		if (requestStatus && requestType == 0) {
-			// activity.populateTeeth
+		if (requestStatus && requestType == 1) {
+			if (jsonArray != null) {
+				newPatientActivity.setAlreadyVisited(true);
+			} else {
+				newPatientActivity.setAlreadyVisited(false);
+			}
+			
+		}
+		if (progress.isShowing()) {
+			progress.dismiss();
 		}
 	}
 

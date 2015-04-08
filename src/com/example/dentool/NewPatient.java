@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import tools.Patient;
 import tools.SendDataToServer;
+import tools.Tooth;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +31,8 @@ public class NewPatient extends Activity implements OnClickListener {
 	EditText firstName;
 	EditText lastName;
 	EditText id;
+	
+	private boolean alreadyVisited;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +65,16 @@ public class NewPatient extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		String patientId = id.toString();
-		String patientFirstName = firstName.toString();
-		String patientLastName = lastName.toString();
+		String patientId = id.getText().toString();
+		String patientFirstName = firstName.getText().toString();
+		String patientLastName = lastName.getText().toString();
+		
+		// Send request to server
+		// TODO: Add some kind of test to ensure all fields have been filled
 		new SendDataToServer(1, patientId, patientFirstName, patientLastName,
 				new ArrayList<NameValuePair>(), this).execute();
-		
-		Boolean alreadyVisited = false;
-		if (alreadyVisited) {
+		// Should wait for AsyncTask to finish before proceeding
+		if (this.alreadyVisited) {
 			patient = loadPatientData("");
 		}
 		else {
@@ -77,14 +85,31 @@ public class NewPatient extends Activity implements OnClickListener {
 	}
 
 	private Patient initNewPatient() {
-		return new Patient(firstName.getText().toString(), id.getText().toString());		
+		Patient patient = new Patient(firstName.getText().toString(), lastName.getText().toString(), id.getText().toString());	
+		// For loop to populate the teeth using createTooth
+		return patient;
 	}
 
 	private Patient loadPatientData(String data) {
-		String newUserName = data;
-		String uid = data;
-		Patient newPatient = new Patient(newUserName, uid);
-		return newPatient;
+		// TODO:
+		return null;
+	}
+	
+	// Create a single tooth from a JSON string
+	private Tooth createTooth(JSONObject toothAsJson) {
+		try {
+			Boolean existing = Boolean.valueOf(toothAsJson.getString("existing"));
+			JSONArray decayValues = toothAsJson.getJSONArray("decay");
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void setAlreadyVisited(boolean alreadyVisited) {
+		this.alreadyVisited = alreadyVisited;
 	}
 	
 	public void serverTestMethod(View v) {
