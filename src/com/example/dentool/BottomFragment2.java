@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import tools.DecayAdapter;
 import tools.HorizontalLayout;
-import tools.MissingTeethAdapter;
 import tools.Tooth;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;

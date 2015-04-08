@@ -85,11 +85,6 @@ public class DecayAdapter extends ArrayAdapter<Tooth> implements OnCheckedChange
 			viewHolder.tb5.setOnCheckedChangeListener(this); 
 
 
-
-
-
-
-
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
