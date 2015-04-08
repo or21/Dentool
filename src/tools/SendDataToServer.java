@@ -9,10 +9,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
@@ -20,12 +17,13 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class SendDataToServer extends AsyncTask<String, Void, Boolean>{
+public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 
-	private static final String POST = "POST";
-
-	private final String method;
-
+	private static final String HOST = "10.10.1.25";
+	private final String urlUploadFile = HOST + "/upload_file";
+	private final String urlNewSession = HOST + "/";
+	private String url;
+	
 	private Activity activity;
 	private List<NameValuePair> requestParams;
 	private InputStream is;
@@ -37,31 +35,37 @@ public class SendDataToServer extends AsyncTask<String, Void, Boolean>{
 	public SendDataToServer(Activity activity, List<NameValuePair> params, String method) {
 		this.activity = activity;
 		this.requestParams = params;
-		this.method = method;
+	}
+	
+	public SendDataToServer(int target, String patient_id, List<NameValuePair> params) {
+		if (target == 0) {
+			url = urlUploadFile + patient_id;
+		} else if (target == 1) {
+			url = urlNewSession + patient_id;
+		}
+		this.requestParams = params;
 	}
 
+	@Override
+	protected void onPreExecute() {
+		super.onPreExecute();
+	}
 
 	@Override
-	protected Boolean doInBackground(String... params) {
+	protected Boolean doInBackground(Void... params) {
 		Boolean requestStatus = false;
 		try {
-			String url = params[0];
 			HttpResponse httpResponse;
-			HttpRequestBase httpMethod;
-			// create http request
-			if (method == POST) {
-				HttpPost httpPost = new HttpPost(url);
-				httpPost.setEntity(new UrlEncodedFormEntity(requestParams, "utf-8"));
-				httpMethod = httpPost;
-			} else {
-				String paramString = URLEncodedUtils.format(requestParams, "utf-8");
-				httpMethod = new HttpGet(url + "?" + paramString);
-			}
-
+			
+			HttpPost httpPost = new HttpPost(url);
+			httpPost.setEntity(new UrlEncodedFormEntity(requestParams, "utf-8"));
+	
 			DefaultHttpClient httpClient = new DefaultHttpClient();
+			
+			// Execute the request
+			httpResponse = httpClient.execute(httpPost);
 
-			httpResponse = httpClient.execute(httpMethod);
-
+			// Get the server response
 			HttpEntity httpEntity = httpResponse.getEntity();
 			is = httpEntity.getContent();
 
@@ -75,7 +79,7 @@ public class SendDataToServer extends AsyncTask<String, Void, Boolean>{
 			is.close();
 			json = sb.toString();
 			
-			jsonObj = new JSONObject();
+			jsonObj = new JSONObject(json);
 			
 			// TODO: read message and check if success
 			
