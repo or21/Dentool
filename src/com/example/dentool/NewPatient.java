@@ -21,6 +21,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+// TODO: For entire class: Make UI thread wait for SaveDataToServer to finish, or send an answer
+//			complete createTooth(). After that, should be a walk in the park to populate the Patient instance.
 public class NewPatient extends Activity implements OnClickListener {
 
 	private static final CharSequence FIRSTNAME = "Please enter patient first name";
@@ -33,6 +35,7 @@ public class NewPatient extends Activity implements OnClickListener {
 	EditText id;
 	
 	private boolean alreadyVisited;
+	private Tooth[] teeth;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,8 @@ public class NewPatient extends Activity implements OnClickListener {
 		id.setHint(ID);
 		
 		Button skip = (Button) findViewById(R.id.skip);
+		Button tester = (Button) findViewById(R.id.test_button);
+		tester.setOnClickListener(this);
 		skip.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -65,7 +70,9 @@ public class NewPatient extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		String patientId = id.getText().toString();
+		Log.d("I'm in onClick", "HI");
+//		String patientId = id.getText().toString();
+		String patientId = "20033";
 		String patientFirstName = firstName.getText().toString();
 		String patientLastName = lastName.getText().toString();
 		
@@ -74,6 +81,7 @@ public class NewPatient extends Activity implements OnClickListener {
 		new SendDataToServer(1, patientId, patientFirstName, patientLastName,
 				new ArrayList<NameValuePair>(), this).execute();
 		// Should wait for AsyncTask to finish before proceeding
+		Log.d("Entering the if", "HI HI");
 		if (this.alreadyVisited) {
 			patient = loadPatientData("");
 		}
@@ -86,7 +94,7 @@ public class NewPatient extends Activity implements OnClickListener {
 
 	private Patient initNewPatient() {
 		Patient patient = new Patient(firstName.getText().toString(), lastName.getText().toString(), id.getText().toString());	
-		// For loop to populate the teeth using createTooth
+		// TODO: For loop to populate the teeth using createTooth - Maybe this goes in loadPatientData?
 		return patient;
 	}
 
@@ -110,6 +118,7 @@ public class NewPatient extends Activity implements OnClickListener {
 	
 	public void setAlreadyVisited(boolean alreadyVisited) {
 		this.alreadyVisited = alreadyVisited;
+		Log.d("I'm in alreadyVisited", "HI");
 	}
 	
 	public void serverTestMethod(View v) {

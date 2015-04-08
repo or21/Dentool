@@ -81,8 +81,10 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 
 	@Override
 	protected void onPreExecute() {
-		progress.setMessage("Server request in progress");
-		progress.show();
+		try {
+			progress = ProgressDialog.show(newPatientActivity.getApplicationContext(), "", "Server request in progress", true);
+		} catch (Exception e)
+		{}
 	}
 
 	@Override
@@ -129,10 +131,17 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 	}
 	
 	@Override
+	protected void onProgressUpdate(Void... values) {
+		// TODO Auto-generated method stub
+		super.onProgressUpdate(values);
+	}
+	
+	@Override
 	protected void onPostExecute(Boolean requestStatus) {
 		if (requestStatus && requestType == 1) {
 			if (jsonArray != null) {
 				newPatientActivity.setAlreadyVisited(true);
+				newPatientActivity.populateTeethArray(jsonArray);
 			} else {
 				newPatientActivity.setAlreadyVisited(false);
 			}
