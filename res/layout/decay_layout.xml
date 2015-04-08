@@ -21,11 +21,11 @@
         <!-- TOP BUTTON -->
         <Button
             android:id="@+id/topButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="60dp"
+            android:layout_height="34dp"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="53dip"
-            android:layout_marginTop="11dip"
+            android:layout_marginLeft="45dip"
+            android:layout_marginTop="4dip"
             android:background="@drawable/button_bg"
             android:textColor="@android:color/transparent" />
 
@@ -55,10 +55,10 @@
         <!-- BOTTOM BUTTON -->
         <Button
             android:id="@+id/bottomButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="60dp"
+            android:layout_height="34dp"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="63dip"
+            android:layout_marginLeft="45dip"
             android:layout_marginTop="112dip"
             android:background="@drawable/button_bg"
             android:textColor="@android:color/transparent" />
@@ -66,11 +66,11 @@
         <!-- MIDDLE BUTTON -->
         <Button
             android:id="@+id/middleButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="68dip"
-            android:layout_marginTop="70dip"
+            android:layout_marginLeft="45dip"
+            android:layout_marginTop="47dip"
             android:background="@drawable/button_bg"
             android:textColor="@android:color/transparent" />
         
