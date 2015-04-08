@@ -141,7 +141,7 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 		if (requestStatus && requestType == 1) {
 			if (jsonArray != null) {
 				newPatientActivity.setAlreadyVisited(true);
-				newPatientActivity.populateTeethArray(jsonArray);
+//				newPatientActivity.populateTeethArray(jsonArray);
 			} else {
 				newPatientActivity.setAlreadyVisited(false);
 			}
