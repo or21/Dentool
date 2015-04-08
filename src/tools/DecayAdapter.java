@@ -7,17 +7,16 @@ import com.example.dentool.NewPatient;
 import com.example.dentool.R;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.ToggleButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class DecayAdapter extends ArrayAdapter<Tooth> implements OnCheckedChangeListener{
+public class DecayAdapter extends ArrayAdapter<Tooth> implements OnClickListener{
 
 	//Image array holder
 	int[][] images = {{R.drawable.decay_00, R.drawable.decay_01, 
@@ -32,15 +31,18 @@ public class DecayAdapter extends ArrayAdapter<Tooth> implements OnCheckedChange
 		return 8;
 	}
 
+
+	Button topButton;
+	Button leftButton;
+	Button rightButton;
+	Button middleButton;
+	Button bottomButton;
+
+
 	private static class ViewHolder {
 		private ListView itemView;
-		ImageView back;
 
-		ToggleButton tb1;
-		ToggleButton tb2;
-		ToggleButton tb3;
-		ToggleButton tb4;
-		ToggleButton tb5;
+
 
 		@SuppressWarnings("unused")
 		public ListView getItemView() {
@@ -48,44 +50,39 @@ public class DecayAdapter extends ArrayAdapter<Tooth> implements OnCheckedChange
 		}
 	}
 
-	private int pictureId;
 	int index;
-	ViewHolder viewHolder = null;
 
 	public DecayAdapter(Context context, int textViewResourceId, ArrayList<Tooth> items, int pictureId) {
 		super(context, textViewResourceId, items);
-		this.pictureId = pictureId;
 	}
 
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		index = position;
-
+		ViewHolder viewHolder;
 		if (convertView == null) {
 			convertView = LayoutInflater.from(this.getContext())
 					.inflate(R.layout.decay_layout, parent, false);
 
 			viewHolder = new ViewHolder();
 
-			//load ImageView button - background
-			viewHolder.back = (ImageView) convertView.findViewById(R.id.toggleHolder);
+			topButton = (Button)convertView.findViewById(R.id.topButton);
+			topButton.setOnClickListener(this);
 
-			status = NewPatient.patient.getTeeth()[position].getDecay();
+			rightButton = (Button)convertView.findViewById(R.id.rightButton);
+			rightButton.setOnClickListener(this);
 
-			//load toggle buttons
-			viewHolder.tb1 = (ToggleButton) convertView.findViewById(R.id.middleButton);
-			viewHolder.tb2 = (ToggleButton) convertView.findViewById(R.id.topButton);
-			viewHolder.tb3 = (ToggleButton) convertView.findViewById(R.id.rightButton);
-			viewHolder.tb4 = (ToggleButton) convertView.findViewById(R.id.bottomButton);
-			viewHolder.tb5 = (ToggleButton) convertView.findViewById(R.id.leftButton);
+			bottomButton = (Button)convertView.findViewById(R.id.bottomButton);
+			bottomButton.setOnClickListener(this);
 
-			viewHolder.tb1.setOnCheckedChangeListener(this); 
-			viewHolder.tb2.setOnCheckedChangeListener(this); 
-			viewHolder.tb3.setOnCheckedChangeListener(this); 
-			viewHolder.tb4.setOnCheckedChangeListener(this); 
-			viewHolder.tb5.setOnCheckedChangeListener(this); 
+
+			leftButton = (Button)convertView.findViewById(R.id.leftButton);
+			leftButton.setOnClickListener(this);
 
 
 
+			middleButton = (Button)convertView.findViewById(R.id.middleButton);
+
+			middleButton.setOnClickListener(this);
 
 
 
@@ -98,51 +95,64 @@ public class DecayAdapter extends ArrayAdapter<Tooth> implements OnCheckedChange
 		return convertView;
 	}
 
+
+
 	@Override
-	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-		switch (buttonView.getId()){
-		case (R.id.middleButton):
-			if (!status[0]){
-				viewHolder.tb1.setBackgroundResource(images[1][0]);
+	public void onClick(View v) {
+		status = NewPatient.patient.getTeeth()[index].getDecay();
+		switch(v.getId()){
+		case (R.id.middleButton): {
+			if (status[0]){
+				v.setBackgroundResource(R.drawable.button_normal);
+				v.setBackgroundResource(Color.TRANSPARENT);
 			} else {
-				viewHolder.tb1.setBackgroundResource(images[0][0]);
+				v.setBackgroundResource(R.drawable.button_selected);
+				v.setBackgroundColor(Color.RED);
 			}
-		NewPatient.patient.getTeeth()[index].setDecay(
-				new Boolean[] {!status[0], status[1], status[2], status[3],status[4]});
-		case (R.id.topButton):
-			if (!status[1]){
-				viewHolder.tb2.setBackgroundResource(images[1][1]);
+			NewPatient.patient.getTeeth()[index].setDecay(
+					new Boolean[] {!status[0], status[1], status[2], status[3],status[4]});
+			break;
+		}
+		case (R.id.topButton): {
+			if (status[1]){
+				v.setBackgroundResource(R.drawable.button_normal);
 			} else {
-				viewHolder.tb2.setBackgroundResource(images[0][1]);
+				v.setBackgroundResource(Color.TRANSPARENT);
 			}
-		NewPatient.patient.getTeeth()[index].setDecay(
-				new Boolean[] {status[0], !status[1], status[2], status[3],status[4]});
-		case (R.id.rightButton):
-			if (!status[2]){
-				viewHolder.tb3.setBackgroundResource(images[1][2]);
+			NewPatient.patient.getTeeth()[index].setDecay(
+					new Boolean[] {status[0], !status[1], status[2], status[3],status[4]});
+			break;
+		}
+		case (R.id.rightButton): {
+			if (status[2]){
+				v.setBackgroundResource(R.drawable.button_normal);
 			} else {
-				viewHolder.tb3.setBackgroundResource(images[0][2]);
+				v.setBackgroundResource(Color.TRANSPARENT);
 			}
-		NewPatient.patient.getTeeth()[index].setDecay(
-				new Boolean[] {status[0], status[1], !status[2], status[3],status[4]});
-		case (R.id.bottomButton):
-			if (!status[3]){
-				viewHolder.tb4.setBackgroundResource(images[1][3]);
+			NewPatient.patient.getTeeth()[index].setDecay(
+					new Boolean[] {status[0], status[1], !status[2], status[3],status[4]});
+			break;
+		}
+		case (R.id.bottomButton): {
+			if (status[3]){
+				v.setBackgroundResource(R.drawable.button_normal);
 			} else {
-				viewHolder.tb4.setBackgroundResource(images[0][3]);
+				v.setBackgroundResource(Color.TRANSPARENT);
 			}
-		NewPatient.patient.getTeeth()[index].setDecay(
-				new Boolean[] {status[0], status[1], status[2], !status[3],status[4]});
-		case (R.id.leftButton):
-			if (!status[4]){
-				viewHolder.tb5.setBackgroundResource(images[1][4]);
+			NewPatient.patient.getTeeth()[index].setDecay(
+					new Boolean[] {status[0], status[1], status[2], !status[3],status[4]});
+			break;
+		}
+		case (R.id.leftButton): {
+			if (status[4]){
+				v.setBackgroundResource(R.drawable.button_normal);
 			} else {
-				viewHolder.tb5.setBackgroundResource(images[0][4]);
+				v.setBackgroundResource(Color.TRANSPARENT);
 			}
-		NewPatient.patient.getTeeth()[index].setDecay(
-				new Boolean[] {status[0], status[1], status[2], status[3], !status[4]});
-
+			NewPatient.patient.getTeeth()[index].setDecay(
+					new Boolean[] {status[0], status[1], status[2], status[3], !status[4]});
+			break;
+		}
 		}
 	}
 }

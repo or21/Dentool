@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+            
     <!-- BUTTONS ON IMAGE -->
 
     <RelativeLayout
@@ -12,90 +13,68 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:id="@+id/toggleHolder"
-    
+            android:id="@+id/topViewThooth"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/decay_001" />
 
         <!-- TOP BUTTON -->
-
-        <ToggleButton
+        <Button
             android:id="@+id/topButton"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            
-            android:layout_marginTop="-6dp"
-            
-            android:background="@drawable/decay_01"
-
-            android:textOff=""
-            android:textOn="" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="53dip"
+            android:layout_marginTop="11dip"
+            android:background="@drawable/button_bg"
+            android:textColor="@android:color/transparent" />
 
         <!-- LEFT BUTTON -->
-
-        <ToggleButton
+        <Button
             android:id="@+id/leftButton"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="5dip"
-            android:layout_marginTop="60dip"
-            android:layout_weight="1"
-            android:background="@drawable/decay_04"
-            android:clickable="true"
-            android:textColor="@android:color/transparent"
-            android:textOff=""
-            android:textOn="" />
+            
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="70dip"
+            android:background="@drawable/button_bg"
+            android:textColor="@android:color/transparent" />
 
         <!-- RIGHT BUTTON -->
-
-        <ToggleButton
+        <Button
             android:id="@+id/rightButton"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="133dip"
-            android:layout_marginTop="60dip"
-            android:layout_weight="1"
-            android:background="@drawable/decay_02"
-            android:clickable="true"
-            android:textColor="@android:color/transparent"
-            android:textOff=""
-            android:textOn="" />
+            android:layout_marginLeft="110dip"
+            android:layout_marginTop="70dip"
+            android:background="@drawable/button_bg"
+            android:textColor="@android:color/transparent" />
 
         <!-- BOTTOM BUTTON -->
-
-        <ToggleButton
+        <Button
             android:id="@+id/bottomButton"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="68dip"
-            android:layout_marginTop="126dip"
-            android:layout_weight="1"
-            android:background="@drawable/decay_03"
-            android:clickable="true"
-            android:textColor="@android:color/transparent"
-            android:textOff=""
-            android:textOn="" />
+            android:layout_marginLeft="63dip"
+            android:layout_marginTop="112dip"
+            android:background="@drawable/button_bg"
+            android:textColor="@android:color/transparent" />
 
         <!-- MIDDLE BUTTON -->
-
-        <ToggleButton
+        <Button
             android:id="@+id/middleButton"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="68dip"
-            android:layout_marginTop="62dip"
-            android:layout_weight="1"
-            android:background="@drawable/decay_00"
-            android:clickable="true"
-            android:textColor="@android:color/transparent"
-            android:textOff=""
-            android:textOn="" />
+            android:layout_marginTop="70dip"
+            android:background="@drawable/button_bg"
+            android:textColor="@android:color/transparent" />
+        
     </RelativeLayout>
-
-
+    
+        
 </LinearLayout>
