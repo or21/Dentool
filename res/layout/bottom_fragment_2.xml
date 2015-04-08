@@ -2,12 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:background="@android:color/holo_blue_light"
+    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+    <tools.HorizontalLayout
+        android:id="@+id/top_mouth_decay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:dividerHeight="0dp"
+        android:listSelector="#00000000"
+        android:textColor="#00ff00" >
+    </tools.HorizontalLayout>
+
+    <tools.HorizontalLayout
+        android:id="@+id/bottom_mouth_decay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:listSelector="#00000000"
+        android:textColor="#00ff00" >
+    </tools.HorizontalLayout>
 
 </LinearLayout>
