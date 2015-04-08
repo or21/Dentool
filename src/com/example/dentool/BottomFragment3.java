@@ -2,7 +2,6 @@ package com.example.dentool;
 
 import java.util.ArrayList;
 
-import tools.DecayAdapter;
 import tools.HorizontalLayout;
 import tools.Tooth;
 import android.support.v4.app.Fragment;
