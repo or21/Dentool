@@ -19,11 +19,13 @@ import android.widget.EditText;
 
 public class NewPatient extends Activity implements OnClickListener {
 
-	private static final CharSequence USERNAME = "Please enter patient full name";
+	private static final CharSequence FIRSTNAME = "Please enter patient first name";
+	private static final CharSequence LASTNAME = "Please enter patient last name";
 	private static final CharSequence ID = "Please enter patient ID";
 	private Context context;
 	public static Patient patient;
-	EditText userName;
+	EditText firstName;
+	EditText lastName;
 	EditText id;
 
 	@Override
@@ -33,10 +35,15 @@ public class NewPatient extends Activity implements OnClickListener {
 		
 		context = getApplicationContext();
 		
-		userName = (EditText) findViewById(R.id.userName);
-		userName.setHint(USERNAME);
+		firstName = (EditText) findViewById(R.id.firstName);
+		firstName.setHint(FIRSTNAME);
+		
+		lastName = (EditText) findViewById(R.id.lastName);
+		lastName.setHint(LASTNAME);
+		
 		id = (EditText) findViewById(R.id.id);
 		id.setHint(ID);
+		
 		Button skip = (Button) findViewById(R.id.skip);
 		skip.setOnClickListener(new OnClickListener() {
 			
@@ -52,8 +59,12 @@ public class NewPatient extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO: run method that send data to server
-		// if user already treated - load data, else, update and start with empty object
+		String patientId = id.toString();
+		String patientFirstName = firstName.toString();
+		String patientLastName = lastName.toString();
+		new SendDataToServer(1, patientId, patientFirstName, patientLastName,
+				new ArrayList<NameValuePair>(), this).execute();
+		
 		Boolean alreadyVisited = false;
 		if (alreadyVisited) {
 			patient = loadPatientData("");
@@ -66,7 +77,7 @@ public class NewPatient extends Activity implements OnClickListener {
 	}
 
 	private Patient initNewPatient() {
-		return new Patient(userName.getText().toString(), id.getText().toString());		
+		return new Patient(firstName.getText().toString(), id.getText().toString());		
 	}
 
 	private Patient loadPatientData(String data) {
@@ -79,7 +90,7 @@ public class NewPatient extends Activity implements OnClickListener {
 	public void serverTestMethod(View v) {
 		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
 //		params.add(new BasicNameValuePair("patient_id", "20033"));
-		new SendDataToServer(1, "20033", "", "", params, this).execute();
+		new SendDataToServer(1, "20035", "Nadav", "LastName", params, this).execute();
 		Log.d("Hi it's working!", "Hurray");
 	}
 }

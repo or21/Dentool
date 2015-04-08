@@ -12,7 +12,6 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -32,17 +31,24 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 	private String firstName;
 	private String lastName;
 	private Activity activity;
+	private int requestType;
 	
 	private JSONArray jsonArray;
 	
-	public SendDataToServer(int target, String patientId, String firstName,
+	/**
+	 * Constructor - SendDataToServer creates the HTTP POST requests to the server
+	 * params:
+	 * 	requestType - determines whether save_and_send or upload_file methods would
+	 * 					be accessed.
+	 * 	patientId - this patient's id number
+	 * 	firstName - this patient's first name
+	 * 	lastName - this patient's last name
+	 * 	params - the JSON array of teeth, in case upload_file in invoked. Will be
+	 * 					ignored if requestType == 1
+	 * 	activity - caller activity instance
+	 */
+	public SendDataToServer(int requestType, String patientId, String firstName,
 			String lastName, List<NameValuePair> params, Activity activity) {
-		if (target == 0) {
-			url = urlUploadFile + patientId;
-		} else if (target == 1) {
-			url = urlNewSession + patientId;
-		}
-		
 		// Set empty firstName and lastName if non are given
 		if (firstName == null) {
 			this.firstName = "";
@@ -54,15 +60,24 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 			this.lastName = "";
 		} else {
 			this.lastName = lastName;
+		}		
+		
+		if (requestType == 0) {
+			url = urlUploadFile + patientId;
+		} else if (requestType == 1) {
+			// TODO: Add some test to ensure no empty first and last name are given?
+			url = urlNewSession + patientId + "?first_name=" + this.firstName + "&last_name=" + this.lastName;
 		}
 		
 		this.activity = activity;
 		this.requestParams = params;
+		this.requestType = requestType;
 	}
 
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
+		// TODO: Run on UI Thread Spinner
 	}
 
 	@Override
@@ -91,9 +106,13 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 				line = reader.readLine();
 			}
 			is.close();
-			json = sb.toString();
 			
-			jsonArray = new JSONArray(json);
+			// If requestType == 0 (invoked upload_file), create the jsonArray
+			if (requestType == 0) {
+				json = sb.toString();
+			
+				jsonArray = new JSONArray(json);
+			}
 			
 			int status = httpResponse.getStatusLine().getStatusCode();
 			if (status == 200) {
@@ -108,7 +127,7 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 	
 	@Override
 	protected void onPostExecute(Boolean requestStatus) {
-		if (requestStatus) {
+		if (requestStatus && requestType == 0) {
 			// activity.populateTeeth
 		}
 	}
