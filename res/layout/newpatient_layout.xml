@@ -116,19 +116,5 @@
             android:layout_marginEnd="54dp"
             android:layout_marginTop="19dp"
             android:text="SKIP" />
-        
-        <RelativeLayout 
-            android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_alignParentBottom="true">
-            
-            <Button
-        	    android:id="@+id/test_button"
-            	android:layout_width="wrap_content"
- 	      	    android:layout_height="wrap_content"
-   	        	android:text="TESTER"
-   	        	/>
-        </RelativeLayout>
-        
 
 </RelativeLayout>

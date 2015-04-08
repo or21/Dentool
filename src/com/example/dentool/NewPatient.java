@@ -23,6 +23,7 @@ import android.widget.EditText;
 
 // TODO: For entire class: Make UI thread wait for SaveDataToServer to finish, or send an answer
 //			complete createTooth(). After that, should be a walk in the park to populate the Patient instance.
+// TODO: Send the data - turn the Patient instance into a JSON array. CHECK HOW TO CREATE PROPER PARAMS FOR HTTP REQUEST OF UPLOAD_FILE!
 public class NewPatient extends Activity implements OnClickListener {
 
 	private static final CharSequence FIRSTNAME = "Please enter patient first name";
@@ -54,8 +55,6 @@ public class NewPatient extends Activity implements OnClickListener {
 		id.setHint(ID);
 		
 		Button skip = (Button) findViewById(R.id.skip);
-		Button tester = (Button) findViewById(R.id.test_button);
-		tester.setOnClickListener(this);
 		skip.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -72,7 +71,7 @@ public class NewPatient extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		Log.d("I'm in onClick", "HI");
 //		String patientId = id.getText().toString();
-		String patientId = "20033";
+		String patientId = "20033"; // DEBUG
 		String patientFirstName = firstName.getText().toString();
 		String patientLastName = lastName.getText().toString();
 		
@@ -119,12 +118,5 @@ public class NewPatient extends Activity implements OnClickListener {
 	public void setAlreadyVisited(boolean alreadyVisited) {
 		this.alreadyVisited = alreadyVisited;
 		Log.d("I'm in alreadyVisited", "HI");
-	}
-	
-	public void serverTestMethod(View v) {
-		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-//		params.add(new BasicNameValuePair("patient_id", "20033"));
-		new SendDataToServer(1, "20035", "Nadav", "LastName", params, this).execute();
-		Log.d("Hi it's working!", "Hurray");
 	}
 }
