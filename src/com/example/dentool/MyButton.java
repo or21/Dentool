@@ -42,5 +42,6 @@ private boolean mChecked = false;
 	private boolean inBounds(MotionEvent event){
 		getWidth();
 		getHeight();
+		return false;
 	}
 }
