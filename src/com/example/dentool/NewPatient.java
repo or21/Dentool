@@ -1,26 +1,44 @@
 package com.example.dentool;
 
+import java.util.ArrayList;
+
+import org.apache.http.NameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import tools.Patient;
 import android.app.ActionBar;
+import tools.SendDataToServer;
+import tools.Tooth;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+// TODO: For entire class: Make UI thread wait for SaveDataToServer to finish, or send an answer
+//			complete createTooth(). After that, should be a walk in the park to populate the Patient instance.
+// TODO: Send the data - turn the Patient instance into a JSON array. CHECK HOW TO CREATE PROPER PARAMS FOR HTTP REQUEST OF UPLOAD_FILE!
 public class NewPatient extends Activity implements OnClickListener {
 
-	private static final CharSequence USERNAME = "Please enter patient full name";
+	private static final CharSequence FIRSTNAME = "Please enter patient first name";
+	private static final CharSequence LASTNAME = "Please enter patient last name";
 	private static final CharSequence ID = "Please enter patient ID";
 	private Context context;
 	public static Patient patient;
-	EditText userName;
+	EditText firstName;
+	EditText lastName;
 	EditText id;
+	
+	private boolean alreadyVisited;
+	private Tooth[] teeth;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +52,15 @@ public class NewPatient extends Activity implements OnClickListener {
 		
 		context = getApplicationContext();
 		
-		userName = (EditText) findViewById(R.id.userName);
-		userName.setHint(USERNAME);
+		firstName = (EditText) findViewById(R.id.firstName);
+		firstName.setHint(FIRSTNAME);
+		
+		lastName = (EditText) findViewById(R.id.lastName);
+		lastName.setHint(LASTNAME);
+		
 		id = (EditText) findViewById(R.id.id);
 		id.setHint(ID);
+		
 		Button skip = (Button) findViewById(R.id.skip);
 		skip.setOnClickListener(new OnClickListener() {
 			
@@ -53,10 +76,19 @@ public class NewPatient extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO: run method that send data to server
-		// if user already treated - load data, else, update and start with empty object
-		Boolean alreadyVisited = false;
-		if (alreadyVisited) {
+		Log.d("I'm in onClick", "HI");
+//		String patientId = id.getText().toString();
+		String patientId = "20033"; // DEBUG
+		String patientFirstName = firstName.getText().toString();
+		String patientLastName = lastName.getText().toString();
+		
+		// Send request to server
+		// TODO: Add some kind of test to ensure all fields have been filled
+		new SendDataToServer(1, patientId, patientFirstName, patientLastName,
+				new ArrayList<NameValuePair>(), this).execute();
+		// Should wait for AsyncTask to finish before proceeding
+		Log.d("Entering the if", "HI HI");
+		if (this.alreadyVisited) {
 			patient = loadPatientData("");
 		}
 		else {
@@ -67,13 +99,31 @@ public class NewPatient extends Activity implements OnClickListener {
 	}
 
 	private Patient initNewPatient() {
-		return new Patient(userName.getText().toString(), id.getText().toString());		
+		Patient patient = new Patient(firstName.getText().toString(), lastName.getText().toString(), id.getText().toString());	
+		// TODO: For loop to populate the teeth using createTooth - Maybe this goes in loadPatientData?
+		return patient;
 	}
 
 	private Patient loadPatientData(String data) {
-		String newUserName = data;
-		String uid = data;
-		Patient newPatient = new Patient(newUserName, uid);
-		return newPatient;
+		// TODO:
+		return null;
+	}
+	
+	// Create a single tooth from a JSON string
+	private Tooth createTooth(JSONObject toothAsJson) {
+		try {
+			Boolean existing = Boolean.valueOf(toothAsJson.getString("existing"));
+			JSONArray decayValues = toothAsJson.getJSONArray("decay");
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void setAlreadyVisited(boolean alreadyVisited) {
+		this.alreadyVisited = alreadyVisited;
+		Log.d("I'm in alreadyVisited", "HI");
 	}
 }

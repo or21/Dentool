@@ -7,7 +7,9 @@
     <string name="action_settings">Settings</string>
     <string name="send_files">Send Patient Data</string>
     <string name="user_name">Patient Name</string>
-    <string name="id">ID</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="id">Patient ID</string>
     <string name="headline">DenTool For Dentists</string>
     <string name="Send">Send</string>
     <string name="title_activity_horizontal_list_view">HorizontalListView</string>
