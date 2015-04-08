@@ -38,10 +38,21 @@ public class HorizontalLayout extends LinearLayout {
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
 		params.setMargins(6, 25, 6, 6);
 		for (int i = 0; i < 8; i++) {
-			MyDrawerFiveButton child = new MyDrawerFiveButton(getContext());
+			MyDrawerFiveButtonDecay child = new MyDrawerFiveButtonDecay(getContext());
 			child.setLayoutParams(params);
 			child.setIndex(i + (line * 8));
 			this.addView(child);
 		}
 	}
-}
+	public void generateDrawingLayoutFillings(int line) {
+
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+		params.setMargins(6, 25, 6, 6);
+		for (int i = 0; i < 8; i++) {
+			MyDrawerFiveButtonFillings child = new MyDrawerFiveButtonFillings(getContext());
+			child.setLayoutParams(params);
+			child.setIndex(i + (line * 8));
+			this.addView(child);
+		}
+	}
+}	

@@ -11,20 +11,20 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class MyDrawerFiveButton extends View {
+public class MyDrawerFiveButtonDecay extends View {
 
-	public MyDrawerFiveButton(Context context, AttributeSet attrs,
+	public MyDrawerFiveButtonDecay(Context context, AttributeSet attrs,
 			int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		initPaint();
 	}
 
-	public MyDrawerFiveButton(Context context, AttributeSet attrs) {
+	public MyDrawerFiveButtonDecay(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initPaint();
 	}
 
-	public MyDrawerFiveButton(Context context) {
+	public MyDrawerFiveButtonDecay(Context context) {
 		super(context);
 		initPaint();
 	}
@@ -80,8 +80,6 @@ public class MyDrawerFiveButton extends View {
 				case MotionEvent.ACTION_DOWN: {
 					float x = event.getX();
 					float y = event.getY();
-					int[] location = new int[2];
-					v.getLocationOnScreen(location);
 					
 					float centerX = (v.getWidth() / 2);
 					float centerY = (v.getHeight() / 2);
