@@ -30,11 +30,19 @@ public class MyDrawerFiveButtonDecay extends View {
 		initPaint();
 	}
 	
+	// i is the index of the tooth in the teeth array
+	public MyDrawerFiveButtonDecay(Context context, int i) {
+		super(context);
+		this.index = i;
+		initPaint();
+	}
+
 	private Paint top, right, left, bottom, border, inner;
 	int mRadius = 100;
 	final String orange = "#f99d11";
 	final int WHITE = Color.WHITE;
 	final int ORANGE = Color.parseColor(orange);
+	int[] initalColors = new int[5];
 	Boolean[] status;
 	private int index;
 	
@@ -45,23 +53,33 @@ public class MyDrawerFiveButtonDecay extends View {
 		left = new Paint();
 		bottom = new Paint();
 		inner = new Paint();
+		
+		// init the state from the tooth object
+		for (int i = 0; i < 5; i++) {
+			if (NewPatient.patient.getTeeth()[index].getDecay()[i]) {
+				initalColors[i] = ORANGE;
+			}
+			else {
+				initalColors[i] = WHITE;
+			}
+		}
         
-		top.setColor(WHITE);
+		top.setColor(initalColors[1]);
 		top.setStrokeWidth(mRadius/1.35f);
         top.setAntiAlias(true);
         top.setStyle(Paint.Style.STROKE);
         
-        right.setColor(WHITE);
+        right.setColor(initalColors[2]);
         right.setStrokeWidth(mRadius/1.35f);
         right.setAntiAlias(true);
         right.setStyle(Paint.Style.STROKE);
         
-        left.setColor(WHITE);
+        left.setColor(initalColors[4]);
         left.setStrokeWidth(mRadius/1.35f);
         left.setAntiAlias(true);
         left.setStyle(Paint.Style.STROKE);
         
-        bottom.setColor(WHITE);
+        bottom.setColor(initalColors[3]);
         bottom.setStrokeWidth(mRadius/1.35f);
         bottom.setAntiAlias(true);
         bottom.setStyle(Paint.Style.STROKE);
@@ -71,8 +89,9 @@ public class MyDrawerFiveButtonDecay extends View {
         border.setAntiAlias(true);
         border.setStyle(Paint.Style.STROKE);
         
-        inner.setColor(WHITE);
+        inner.setColor(initalColors[0]);
         inner.setStyle(Paint.Style.FILL);
+        
         this.setOnTouchListener(new OnTouchListener() {
 			
 			@Override
@@ -84,7 +103,7 @@ public class MyDrawerFiveButtonDecay extends View {
 					
 					float centerX = (v.getWidth() / 2);
 					float centerY = (v.getHeight() / 2);
-					Toast.makeText(getContext(), "" + (index + 1), Toast.LENGTH_SHORT).show();
+					
 					status = NewPatient.patient.getTeeth()[index].getDecay();
 					
 					if (pitagoras(x, y, centerX, centerY) < (float) (mRadius / 1.5)) {
@@ -92,6 +111,7 @@ public class MyDrawerFiveButtonDecay extends View {
 							inner.setColor(ORANGE);
 							NewPatient.patient.getTeeth()[index].setDecay(
 									new Boolean[] {!status[0], status[1], status[2], status[3],status[4]});
+							
 						} else {
 							inner.setColor(WHITE);
 							NewPatient.patient.getTeeth()[index].setDecay(

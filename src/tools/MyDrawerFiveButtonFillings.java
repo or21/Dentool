@@ -42,6 +42,14 @@ public class MyDrawerFiveButtonFillings extends View {
 		initPaint();
 	}
 	
+	// i is the index of the tooth in the teeth array
+	public MyDrawerFiveButtonFillings(Context context, int i) {
+		super(context);
+		this.context = context;
+		this.index = i;
+		initPaint();
+	}
+
 	private Paint top, right, left, bottom, border, inner;
 	int mRadius = 100;
 	final String blue = "#056faa";
@@ -57,6 +65,7 @@ public class MyDrawerFiveButtonFillings extends View {
 	String[] items = {"NULL", "EXISTING", "DEFECTIVE", "NOT URGENT"};
 	private int index;
 	int afterChoose;
+	private int[] initalColors = new int[5];
 	
 	private void initPaint() {
 		map.put(0, WHITE);
@@ -70,23 +79,37 @@ public class MyDrawerFiveButtonFillings extends View {
 		left = new Paint();
 		bottom = new Paint();
 		inner = new Paint();
+		
+		// init the state from the tooth object
+		for (int i = 0; i < 5; i++) {
+			if (NewPatient.patient.getTeeth()[index].getFillings()[i].equals(enumList[0])) {
+				initalColors[i] = WHITE;
+			} else 	if (NewPatient.patient.getTeeth()[index].getFillings()[i].equals(enumList[1])) {
+				initalColors[i] = BLUE;
+			} else 	if (NewPatient.patient.getTeeth()[index].getFillings()[i].equals(enumList[2])) {
+				initalColors[i] = BROWN;
+			} else 	if (NewPatient.patient.getTeeth()[index].getFillings()[i].equals(enumList[3])) {
+				initalColors[i] = LIGHTBLUE;
+			}
+				
+		}
         
-		top.setColor(WHITE);
+		top.setColor(initalColors[1]);
 		top.setStrokeWidth(mRadius/1.35f);
         top.setAntiAlias(true);
         top.setStyle(Paint.Style.STROKE);
         
-        right.setColor(WHITE);
+        right.setColor(initalColors[2]);
         right.setStrokeWidth(mRadius/1.35f);
         right.setAntiAlias(true);
         right.setStyle(Paint.Style.STROKE);
         
-        left.setColor(WHITE);
+        left.setColor(initalColors[4]);
         left.setStrokeWidth(mRadius/1.35f);
         left.setAntiAlias(true);
         left.setStyle(Paint.Style.STROKE);
         
-        bottom.setColor(WHITE);
+        bottom.setColor(initalColors[3]);
         bottom.setStrokeWidth(mRadius/1.35f);
         bottom.setAntiAlias(true);
         bottom.setStyle(Paint.Style.STROKE);
@@ -96,8 +119,9 @@ public class MyDrawerFiveButtonFillings extends View {
         border.setAntiAlias(true);
         border.setStyle(Paint.Style.STROKE);
         
-        inner.setColor(WHITE);
+        inner.setColor(initalColors[0]);
         inner.setStyle(Paint.Style.FILL);
+        
         this.setOnTouchListener(new OnTouchListener() {
 			
 			@Override
@@ -111,8 +135,6 @@ public class MyDrawerFiveButtonFillings extends View {
 					
 					final float centerX = (v.getWidth() / 2);
 					final float centerY = (v.getHeight() / 2);
-					
-					Toast.makeText(getContext(), "" + (index + 1), Toast.LENGTH_SHORT).show();
 					
 					AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
 			        builder.setSingleChoiceItems(items, 0, null)

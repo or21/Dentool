@@ -41,9 +41,9 @@ public class BottomFragment3 extends Fragment implements OnClickListener{
 			bottom.add(NewPatient.patient.getTeeth()[i + 16]);
 		}
 		topList.removeAllViews();
-		topList.generateDrawingLayout(0);
+		topList.generateDrawingLayoutFillings(0);
 		bottomList.removeAllViews();
-		bottomList.generateDrawingLayout(2);
+		bottomList.generateDrawingLayoutFillings(2);
 
 		// 0 - left, 1 - right
 		side = 0;
@@ -88,9 +88,9 @@ public class BottomFragment3 extends Fragment implements OnClickListener{
 				bottom.add(NewPatient.patient.getTeeth()[i + 16]);
 			}
 			topList.removeAllViews();
-			topList.generateDrawingLayout(0);
+			topList.generateDrawingLayoutFillings(0);
 			bottomList.removeAllViews();
-			bottomList.generateDrawingLayout(2);
+			bottomList.generateDrawingLayoutFillings(2);
 			sideChooser.setText(R.string.right_side);
 			side = 0;
 		} 
@@ -101,9 +101,9 @@ public class BottomFragment3 extends Fragment implements OnClickListener{
 			}
 
 			topList.removeAllViews();
-			topList.generateDrawingLayout(1);
+			topList.generateDrawingLayoutFillings(1);
 			bottomList.removeAllViews();
-			bottomList.generateDrawingLayout(3);
+			bottomList.generateDrawingLayoutFillings(3);
 			sideChooser.setText(R.string.left_side);
 			side = 1;
 		}
