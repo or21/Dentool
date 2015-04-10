@@ -22,7 +22,7 @@ public class HorizontalLayout extends LinearLayout {
 	}
 
 	public void generateLayout(ArrayAdapter<Tooth> adapter) {
-
+		
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
 		params.setMargins(6, 25, 6, 6);
 

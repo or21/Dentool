@@ -17,6 +17,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 public class MyDrawerFiveButtonFillings extends View {
 
@@ -110,6 +111,8 @@ public class MyDrawerFiveButtonFillings extends View {
 					
 					final float centerX = (v.getWidth() / 2);
 					final float centerY = (v.getHeight() / 2);
+					
+					Toast.makeText(getContext(), "" + (index + 1), Toast.LENGTH_SHORT).show();
 					
 					AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
 			        builder.setSingleChoiceItems(items, 0, null)

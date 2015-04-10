@@ -10,6 +10,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 public class MyDrawerFiveButtonDecay extends View {
 
@@ -83,7 +84,7 @@ public class MyDrawerFiveButtonDecay extends View {
 					
 					float centerX = (v.getWidth() / 2);
 					float centerY = (v.getHeight() / 2);
-					
+					Toast.makeText(getContext(), "" + (index + 1), Toast.LENGTH_SHORT).show();
 					status = NewPatient.patient.getTeeth()[index].getDecay();
 					
 					if (pitagoras(x, y, centerX, centerY) < (float) (mRadius / 1.5)) {

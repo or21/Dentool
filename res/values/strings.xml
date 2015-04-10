@@ -14,5 +14,7 @@
     <string name="Send">Send</string>
     <string name="title_activity_horizontal_list_view">HorizontalListView</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="right_side">To right Side</string>
+    <string name="left_side">To left Side</string>
 
 </resources>
