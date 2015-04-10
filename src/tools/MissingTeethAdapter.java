@@ -49,7 +49,7 @@ public class MissingTeethAdapter extends ArrayAdapter<Tooth>{
 
 	            viewHolder = new ViewHolder();
 	            
-	            viewHolder.tb1 = (ToggleButton) convertView.findViewById(R.id.tb1);
+	            viewHolder.tb1 = (ToggleButton) convertView.findViewById(R.id.tb1_missing);
 	            viewHolder.tb1.setBackgroundResource(CrownTeethAdapter.nullArray[newpos]);
 	            viewHolder.tb1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 					
@@ -57,9 +57,11 @@ public class MissingTeethAdapter extends ArrayAdapter<Tooth>{
 					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 						if (!NewPatient.patient.getTeeth()[position].getExisting()) {
 							viewHolder.tb1.setBackgroundResource(CrownTeethAdapter.nullArray[newpos]);
+							viewHolder.tb1.setHeight(1);
 			        		NewPatient.patient.getTeeth()[position].setExisting(true);
 			        	} else {
 			        		viewHolder.tb1.setBackgroundResource(Color.TRANSPARENT);
+			        		viewHolder.tb1.setHeight(R.id.top_mouth);
 			        		NewPatient.patient.getTeeth()[position].setExisting(false);
 			        	}
 					}
