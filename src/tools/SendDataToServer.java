@@ -14,9 +14,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.dentool.Main;
 import com.example.dentool.NewPatient;
 
 public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
@@ -25,7 +27,7 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 	private final String urlUploadFile = HOST + "/upload_file/";
 	private final String urlNewSession = HOST + "/";
 	private String url;
-	
+
 	private List<NameValuePair> requestParams;
 	private InputStream is;
 	private String line;
@@ -34,11 +36,11 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 	private String lastName;
 	private NewPatient newPatientActivity;
 	private int requestType;
-	
+
 	private ProgressDialog progress;
-	
+
 	private JSONArray jsonArray = null;
-	
+
 	/**
 	 * Constructor - SendDataToServer creates the HTTP POST requests to the server
 	 * params:
@@ -59,20 +61,20 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 		} else {
 			this.firstName = firstName;
 		}
-		
+
 		if (lastName == null) {
 			this.lastName = "";
 		} else {
 			this.lastName = lastName;
 		}		
-		
+
 		if (requestType == 0) {
 			url = urlUploadFile + patientId;
 		} else if (requestType == 1) {
 			// TODO: Add some test to ensure no empty first and last name are given?
 			url = urlNewSession + patientId + "?first_name=" + this.firstName + "&last_name=" + this.lastName;
 		}
-		
+
 		this.newPatientActivity = activity;
 		this.requestParams = params;
 		this.requestType = requestType;
@@ -82,6 +84,7 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 	@Override
 	protected void onPreExecute() {
 		try {
+			// TODO: Finish circle
 			progress = ProgressDialog.show(newPatientActivity.getApplicationContext(), "", "Server request in progress", true);
 		} catch (Exception e)
 		{}
@@ -92,12 +95,12 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 		Boolean requestStatus = false;
 		try {
 			HttpResponse httpResponse;
-			
+
 			HttpPost httpPost = new HttpPost(url);
 			httpPost.setEntity(new UrlEncodedFormEntity(requestParams, "utf-8"));
-	
+
 			DefaultHttpClient httpClient = new DefaultHttpClient();
-			
+
 			// Execute the request
 			httpResponse = httpClient.execute(httpPost);
 
@@ -113,43 +116,49 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 				line = reader.readLine();
 			}
 			is.close();
-			
+
 			json = sb.toString();
-			if (json.length() > 0)
+			/*if (json.length() > 0)
 				jsonArray = new JSONArray(json);
 
-			
+
 			int status = httpResponse.getStatusLine().getStatusCode();
 			if (status == 200) {
 				requestStatus = true;
-			}			
+			}*/			
 		} catch (Exception e) {
 			Log.d("DenTool", "Request failed");
 			e.printStackTrace();
 		}
+//		Log.d("", msg)
 		return requestStatus;
 	}
-	
+
 	@Override
 	protected void onProgressUpdate(Void... values) {
 		// TODO Auto-generated method stub
 		super.onProgressUpdate(values);
 	}
-	
+
 	@Override
 	protected void onPostExecute(Boolean requestStatus) {
 		if (requestStatus && requestType == 1) {
 			if (jsonArray != null) {
 				newPatientActivity.setAlreadyVisited(true);
-//				newPatientActivity.populateTeethArray(jsonArray);
+				//				newPatientActivity.populateTeethArray(jsonArray);
 			} else {
 				newPatientActivity.setAlreadyVisited(false);
 			}
-			
 		}
-		if (progress.isShowing()) {
-			progress.dismiss();
-		}
+		newPatientActivity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				if (progress.isShowing()) {
+					progress.dismiss();
+				}
+				Log.d("Entering the if", "HI HI");
+				newPatientActivity.postExecute();
+			}
+		});
 	}
-
 }

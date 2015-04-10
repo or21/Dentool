@@ -53,7 +53,7 @@ public class MyDrawerFiveButtonFillings extends View {
 	HashMap<Integer,Integer> map = new HashMap<Integer, Integer>();
 	State[] status;
 	State[] enumList = {State.NULL,State.EXISTING,State.DEFECTIVE,State.NOTURGENT};
-	String[] items = {"NULL", "EXISTING", "DEFECTIVE", "NOTURGENT"};
+	String[] items = {"NULL", "EXISTING", "DEFECTIVE", "NOT URGENT"};
 	private int index;
 	int afterChoose;
 	
@@ -91,7 +91,7 @@ public class MyDrawerFiveButtonFillings extends View {
         bottom.setStyle(Paint.Style.STROKE);
         
         border.setColor(Color.BLACK);
-        border.setStrokeWidth(mRadius/1.35f + 2);
+        border.setStrokeWidth(mRadius/1.35f + 10);
         border.setAntiAlias(true);
         border.setStyle(Paint.Style.STROKE);
         

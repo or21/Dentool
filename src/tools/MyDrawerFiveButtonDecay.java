@@ -66,7 +66,7 @@ public class MyDrawerFiveButtonDecay extends View {
         bottom.setStyle(Paint.Style.STROKE);
         
         border.setColor(Color.BLACK);
-        border.setStrokeWidth(mRadius/1.35f + 2);
+        border.setStrokeWidth(mRadius/1.35f + 10);
         border.setAntiAlias(true);
         border.setStyle(Paint.Style.STROKE);
         

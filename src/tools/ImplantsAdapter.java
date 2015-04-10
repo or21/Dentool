@@ -86,7 +86,7 @@ public class ImplantsAdapter extends ArrayAdapter<Tooth>{
 			viewHolder.tb1.setBackgroundResource(CrownTeethAdapter.nullArray[newpos]);
 
 			viewHolder.tb1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-				private String[] items = {"NULL", "EXISTING", "DEFECTIVE", "NOTURGENT"};
+				private String[] items = {"NULL", "EXISTING", "DEFECTIVE", "NOT URGENT"};
 
 				@Override
 				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

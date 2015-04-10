@@ -1,120 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/bglogin" >
 
-        <EditText
-            android:id="@+id/id"
-            android:layout_width="550dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="202dp"
-            android:layout_marginRight="180dp"
-            android:layout_marginEnd="366dp"
-            android:ems="10"
-            android:textSize="30sp"
-            android:inputType="numberPassword" />
+    <EditText
+        android:id="@+id/fname"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lname"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/partiom"
+        android:inputType="text"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 
-        <EditText
-            android:id="@+id/firstName"
-            android:layout_width="550dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/lastName"
-            android:textSize="30sp"
-            android:layout_alignLeft="@+id/id"
-            android:layout_alignStart="@+id/id"
-            android:layout_marginBottom="55dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
-        
-         <EditText
-            android:id="@+id/lastName"
-            android:layout_width="550dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/id"
-            android:textSize="30sp"
-            android:layout_alignLeft="@+id/id"
-            android:layout_alignStart="@+id/id"
-            android:layout_marginBottom="55dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
+    <EditText
+        android:id="@id/lname"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pid"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/partiom"
+        android:inputType="text"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/userFirstNameBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/firstName"
-            android:layout_below="@+id/HeadLine"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="145dp"
-            android:layout_marginEnd="145dp"
-            android:textSize="30sp"
-            android:layout_toLeftOf="@+id/firstName"
-            android:layout_toStartOf="@+id/firstName"
-            android:text="@string/first_name" />
-        
-        <TextView
-            android:id="@+id/userLastNameBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/lastName"
-            android:layout_below="@+id/userFirstName"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="145dp"
-            android:layout_marginEnd="145dp"
-            android:textSize="30sp"
-            android:layout_toLeftOf="@+id/lastName"
-            android:layout_toStartOf="@+id/lastName"
-            android:text="@string/last_name" />
+    <EditText
+        android:id="@id/pid"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/connect"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/partiom"
+        android:inputType="numberPassword"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/idBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/id"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="145dp"
-            android:layout_marginEnd="145dp"
-            android:textSize="30sp"
-            android:layout_toLeftOf="@+id/id"
-            android:layout_toStartOf="@+id/id"
-            android:text="@string/id" />
-
-        <TextView
-            android:id="@+id/HeadLine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/userName"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="100dp"
-            android:text="@string/headline"
-            android:textColor="#287fb8"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="80sp" />
-
-        <Button
-            android:id="@+id/sendInfo"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/idBox"
-            android:layout_marginTop="76dp"
-            android:layout_centerHorizontal="true"
-            android:layout_toRightOf="@+id/userFirstNameBox"
-			android:layout_toEndOf="@+id/userFirstNameBox"
-            android:text="@string/Send" />
-
-        <Button
-            android:id="@+id/skip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/sendInfo"
-            android:layout_marginRight="54dp"
-            android:layout_marginEnd="54dp"
-            android:layout_marginTop="19dp"
-            android:text="SKIP" />
+    <Button
+        android:id="@id/connect"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="50dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:background="@drawable/connect_button"
+        android:hapticFeedbackEnabled="true"
+        android:text="Connect"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 
 </RelativeLayout>

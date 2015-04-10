@@ -20,6 +20,11 @@
         android:textColor="#00ff00" >
     </tools.HorizontalLayout>
     
+    <View 
+        android:id="@+id/View1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"        />
+    
     <tools.HorizontalLayout
         android:id="@+id/bottom_mouth_fillings"
         android:layout_width="match_parent"
