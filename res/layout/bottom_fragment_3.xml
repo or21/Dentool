@@ -21,21 +21,29 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:cacheColorHint="#00000000"
         android:divider="@null"
         android:dividerHeight="0dp"
         android:listSelector="#00000000"
         android:textColor="#00ff00" >
-        
     </tools.HorizontalLayout>
-
+	
+    <TextView
+        android:id="@+id/sepertaor"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@android:color/holo_blue_light" />
+    
     <tools.HorizontalLayout
         android:id="@+id/bottom_mouth_fillings"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
-        android:layout_weight="1"
+        android:layout_marginBottom="70dp"
+        android:layout_weight="2"
         android:cacheColorHint="#00000000"
         android:divider="@null"
         android:dividerHeight="0dp"

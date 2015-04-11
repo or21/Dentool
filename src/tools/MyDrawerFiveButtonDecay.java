@@ -10,7 +10,6 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 public class MyDrawerFiveButtonDecay extends View {
 
