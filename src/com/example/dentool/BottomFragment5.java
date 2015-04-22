@@ -45,6 +45,7 @@ public class BottomFragment5 extends Fragment{
 		bottomList.removeAllViews();
 		RootTeethAdapter bottomAdapter = new RootTeethAdapter(getActivity(), R.layout.roots_layout, bottom, 1);
 		bottomList.generateLayout(bottomAdapter);
+				
     }
     
     // Store instance variables based on arguments passed

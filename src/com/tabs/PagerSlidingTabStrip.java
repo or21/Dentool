@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+import com.example.dentool.Main;
 import com.example.dentool.R;
 import com.example.dentool.TabsPagerAdapter;
 
@@ -343,7 +344,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 		@Override
 		public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+			Main.updateProgressBar(position + 1);
 			currentPosition = position;
 			currentPositionOffset = positionOffset;
 			

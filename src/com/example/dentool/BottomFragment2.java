@@ -54,6 +54,8 @@ public class BottomFragment2 extends Fragment implements OnClickListener{
 		
 		// 0 - left, 1 - right
 		side = 0;
+
+				
 	}
 	
 	// Store instance variables based on arguments passed

@@ -38,6 +38,7 @@ public class BottomFragment4 extends Fragment{
 		
 		CrownTeethAdapter bottomAdapter = new CrownTeethAdapter(getActivity(), R.layout.crowns_layout, bottom, 1);
 		bottomList.generateLayout(bottomAdapter);
+		
     	return view;
     }
     
