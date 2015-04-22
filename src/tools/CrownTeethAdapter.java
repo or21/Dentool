@@ -11,6 +11,7 @@ import com.example.dentool.R;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +70,6 @@ public class CrownTeethAdapter extends ArrayAdapter<Tooth>{
 
 	HashMap<Integer, State> map = new HashMap<Integer, State>();
 	int afterChoose;
-	private State state;
 	private int index;
 
 	public CrownTeethAdapter(Context context, int textViewResourceId, ArrayList<Tooth> items, int index) {
@@ -84,7 +84,6 @@ public class CrownTeethAdapter extends ArrayAdapter<Tooth>{
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		final ViewHolder viewHolder;
 		final int newpos = position + (index * 16);
-		state = NewPatient.patient.getTeeth()[position].getCrowns();
 
 		if (convertView == null) {
 			convertView = LayoutInflater.from(this.getContext())
@@ -94,17 +93,26 @@ public class CrownTeethAdapter extends ArrayAdapter<Tooth>{
 			viewHolder.tb1 = (ToggleButton) convertView.findViewById(R.id.tb1);
 			
 			State currState = NewPatient.patient.getTeeth()[position].getCrowns();
-			if(currState.equals(State.NULL)) {
-				viewHolder.tb1.setBackgroundResource(nullArray[newpos]);
+			int color = 0;
+			if (currState.equals(State.NULL)) {
+				color = CrownTeethAdapter.nullArray[newpos];
 			}
 			else if(currState.equals(State.DEFECTIVE)) {
-				viewHolder.tb1.setBackgroundResource(damage[newpos]);
+				color = damage[newpos];
 			} 
 			else if(currState.equals(State.EXISTING)) {
-				viewHolder.tb1.setBackgroundResource(fix[newpos]);
+				color = fix[newpos];
 			}
 			else if(currState.equals(State.NOTURGENT)) {
-				viewHolder.tb1.setBackgroundResource(fixAndDamage[newpos]);
+				color = fixAndDamage[newpos];
+			}
+			
+			if (NewPatient.patient.getTeeth()[position].getExisting()) {
+				viewHolder.tb1.setBackgroundResource(color);
+			}
+			else {
+				viewHolder.tb1.setBackgroundResource(Color.TRANSPARENT);
+				viewHolder.tb1.setClickable(false);
 			}
 
 			viewHolder.tb1.setOnCheckedChangeListener(new OnCheckedChangeListener() {

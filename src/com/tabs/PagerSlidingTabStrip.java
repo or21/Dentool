@@ -11,6 +11,8 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
@@ -27,7 +29,7 @@ import android.widget.TextView;
 import java.util.Locale;
 
 import com.example.dentool.R;
-
+import com.example.dentool.TabsPagerAdapter;
 
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 
@@ -39,7 +41,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	private static final int[] ATTRS = new int[] {
 		android.R.attr.textSize,
 		android.R.attr.textColor
-    };
+	};
 	// @formatter:on
 
 	private LinearLayout.LayoutParams defaultTabLayoutParams;
@@ -58,7 +60,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 	private Paint rectPaint;
 	private Paint dividerPaint;
-	
+
 	private int indicatorColor = Color.parseColor("#FFBB33");
 	private int underlineColor = 0x1A000000;
 	private int dividerColor = Color.parseColor("#D9E8F4");
@@ -76,7 +78,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	private int tabTextSize = 21;
 	private int tabTextColor = 0xFFFFFFFF;
 	private Typeface tabTypeface = null;
-//	private int tabTypefaceStyle = Typeface.BOLD;
+	//	private int tabTypefaceStyle = Typeface.BOLD;
 	private int tabTypefaceStyle = 0;
 
 	private int lastScrollX = 0;
@@ -262,7 +264,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 				// pre-ICS-build
 				if (textAllCaps) {
 					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-//						tab.setAllCaps(true);
+						//						tab.setAllCaps(true);
 					} else {
 						tab.setText(tab.getText().toString().toUpperCase(locale));
 					}
@@ -344,9 +346,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 			currentPosition = position;
 			currentPositionOffset = positionOffset;
-
+			
 			scrollToChild(position, (int) (positionOffset * tabsContainer.getChildAt(position).getWidth()));
-
 			invalidate();
 
 			if (delegatePageListener != null) {
@@ -367,6 +368,13 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 		@Override
 		public void onPageSelected(int position) {
+			
+			Fragment f = ((TabsPagerAdapter) pager.getAdapter()).getFragmet(position);
+			
+			if (position == 1 && f != null) {
+				f.onResume();
+			}
+			
 			if (delegatePageListener != null) {
 				delegatePageListener.onPageSelected(position);
 			}

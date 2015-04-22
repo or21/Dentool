@@ -7,6 +7,7 @@ import tools.Tooth.State;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,7 +84,29 @@ public class ImplantsAdapter extends ArrayAdapter<Tooth>{
 			viewHolder = new ViewHolder();
 
 			viewHolder.tb1 = (ToggleButton) convertView.findViewById(R.id.tb1);
-			viewHolder.tb1.setBackgroundResource(CrownTeethAdapter.nullArray[newpos]);
+			
+			State currState = NewPatient.patient.getTeeth()[position].getImplants();
+			int color = 0;
+			if(currState.equals(State.NULL)) {
+				color = CrownTeethAdapter.nullArray[newpos];
+			}
+			else if(currState.equals(State.DEFECTIVE)) {
+				color = damage[newpos];
+			} 
+			else if(currState.equals(State.EXISTING)) {
+				color = fix[newpos];
+			}
+			else if(currState.equals(State.NOTURGENT)) {
+				color = fixAndDamage[newpos];
+			}
+			
+			if (NewPatient.patient.getTeeth()[position].getExisting()) {
+				viewHolder.tb1.setBackgroundResource(color);
+			}
+			else {
+				viewHolder.tb1.setBackgroundResource(Color.TRANSPARENT);
+				viewHolder.tb1.setClickable(false);
+			}
 
 			viewHolder.tb1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 				private String[] items = {"NULL", "EXISTING", "DEFECTIVE", "NOT URGENT"};

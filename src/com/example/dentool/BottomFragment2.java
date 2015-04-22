@@ -32,27 +32,30 @@ public class BottomFragment2 extends Fragment implements OnClickListener{
 
 		topList = (HorizontalLayout) view.findViewById(R.id.top_mouth_decay);
 		bottomList = (HorizontalLayout) view.findViewById(R.id.bottom_mouth_decay);
-
-
+		
+		initView();
+		sideChooser.setOnClickListener(this);
+		
+		return view;
+	}
+	
+	public void initView() {
 		ArrayList<Tooth> top = new ArrayList<Tooth>();
 		ArrayList<Tooth> bottom = new ArrayList<Tooth>();
 		for (int i = 0; i < 8; i++) {
 			top.add(NewPatient.patient.getTeeth()[i]);
 			bottom.add(NewPatient.patient.getTeeth()[i + 16]);
 		}
+		
 		topList.removeAllViews();
 		topList.generateDrawingLayout(0);
 		bottomList.removeAllViews();
 		bottomList.generateDrawingLayout(2);
-
+		
 		// 0 - left, 1 - right
 		side = 0;
-
-		sideChooser.setOnClickListener(this);
-
-		return view;
 	}
-
+	
 	// Store instance variables based on arguments passed
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -70,7 +73,6 @@ public class BottomFragment2 extends Fragment implements OnClickListener{
 		args.putInt("int", page);
 
 		fragment.setArguments(args);
-
 		return fragment;
 	}
 
@@ -104,7 +106,11 @@ public class BottomFragment2 extends Fragment implements OnClickListener{
 			sideChooser.setText(R.string.left_side);
 			side = 1;
 		}
-
 	}
-
+	
+	@Override
+	public void onResume() {
+		initView();
+		super.onResume();
+	}
 }

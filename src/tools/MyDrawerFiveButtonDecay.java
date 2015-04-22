@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -23,22 +22,6 @@ public class MyDrawerFiveButtonDecay extends View {
 	Boolean[] status;
 	private int index;
 
-	public MyDrawerFiveButtonDecay(Context context, AttributeSet attrs,
-			int defStyleAttr) {
-		super(context, attrs, defStyleAttr);
-		initPaint();
-	}
-
-	public MyDrawerFiveButtonDecay(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		initPaint();
-	}
-
-	public MyDrawerFiveButtonDecay(Context context) {
-		super(context);
-		initPaint();
-	}
-	
 	// i is the index of the tooth in the teeth array
 	public MyDrawerFiveButtonDecay(Context context, int i) {
 		super(context);

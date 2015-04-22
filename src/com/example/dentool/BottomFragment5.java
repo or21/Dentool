@@ -26,19 +26,25 @@ public class BottomFragment5 extends Fragment{
     	topList = (HorizontalLayout) view.findViewById(R.id.top_mouth_roots);
 		bottomList = (HorizontalLayout) view.findViewById(R.id.bottom_mouth_roots);
 		
-		ArrayList<Tooth> top = new ArrayList<Tooth>();
+		initView();
+    	return view;
+    }
+    
+    public void initView(){
+    	ArrayList<Tooth> top = new ArrayList<Tooth>();
 		ArrayList<Tooth> bottom = new ArrayList<Tooth>();
 		for (int i = 0; i < 16; i++) {
 			top.add(NewPatient.patient.getTeeth()[i]);
 			bottom.add(NewPatient.patient.getTeeth()[i + 16]);
 		}
 		
+		topList.removeAllViews();
 		RootTeethAdapter topAdapter = new RootTeethAdapter(getActivity(), R.layout.roots_layout, top, 0);
 		topList.generateLayout(topAdapter);
 		
+		bottomList.removeAllViews();
 		RootTeethAdapter bottomAdapter = new RootTeethAdapter(getActivity(), R.layout.roots_layout, bottom, 1);
 		bottomList.generateLayout(bottomAdapter);
-    	return view;
     }
     
     // Store instance variables based on arguments passed
@@ -65,4 +71,9 @@ public class BottomFragment5 extends Fragment{
 		return fragment;
 	}
 	
+	@Override
+	public void onResume() {
+		initView();
+		super.onResume();
+	}
 }

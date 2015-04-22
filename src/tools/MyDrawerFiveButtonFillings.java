@@ -41,25 +41,6 @@ public class MyDrawerFiveButtonFillings extends View {
 	int afterChoose;
 	private int[] initalColors = new int[5];
 
-	public MyDrawerFiveButtonFillings(Context context, AttributeSet attrs,
-			int defStyleAttr) {
-		super(context, attrs, defStyleAttr);
-		this.context = context;
-		initPaint();
-	}
-
-	public MyDrawerFiveButtonFillings(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		this.context = context;
-		initPaint();
-	}
-
-	public MyDrawerFiveButtonFillings(Context context) {
-		super(context);
-		this.context = context;
-		initPaint();
-	}
-	
 	// i is the index of the tooth in the teeth array
 	public MyDrawerFiveButtonFillings(Context context, int i) {
 		super(context);
@@ -77,7 +58,6 @@ public class MyDrawerFiveButtonFillings extends View {
 		top = new Paint();
 		right = new Paint();
 		border = new Paint();
-		
 		left = new Paint();
 		bottom = new Paint();
 		inner = new Paint();
@@ -126,7 +106,7 @@ public class MyDrawerFiveButtonFillings extends View {
 		bottom = new Paint();
 		inner = new Paint();
 		
-		// init the state from the tooth object
+		// initialize the state from the tooth object
 		for (int i = 0; i < 5; i++) {
 			State currState = NewPatient.patient.getTeeth()[index].getFillings()[i];
 			if (currState.equals(enumList[0])) {

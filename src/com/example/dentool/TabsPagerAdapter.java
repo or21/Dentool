@@ -1,8 +1,13 @@
 package com.example.dentool;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.View;
  
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 	
@@ -15,9 +20,17 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 	private String PROBLEM_4 = "Existing Crowns/Bridges";
 	private String PROBLEM_5 = "Existing Root Canal Fillings";
 	private String PROBLEM_6 = "Dental Implants";
+
+	private FragmentManager mFragmentManager;
+	private Map<Integer,String> mFragmentTags;
+	
+	private Context mContext;
  
-    public TabsPagerAdapter(FragmentManager fm) {
+    public TabsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
+        this.mFragmentManager = fm;
+        this.mFragmentTags = new HashMap<Integer, String>();
+        this.mContext = context;
     }
  
     @Override
@@ -37,7 +50,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         case 5:
         	return BottomFragment6.newInstance(5, PROBLEM_6);
         }
- 
         return null;
     }
  
@@ -68,5 +80,26 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
  
         return null;
     }
- 
+    
+    public Fragment getFragmet(int position) {
+    	String tag = mFragmentTags.get(position);
+    	
+    	if (tag == null) {
+    		return null;
+    	}
+    	else {
+    		return mFragmentManager.findFragmentByTag(tag);
+    	}
+    }
+    
+    @Override
+    public Object instantiateItem(View container, int position) {
+    	Object obj =  super.instantiateItem(container, position);
+    	if (obj instanceof Fragment) {
+    		Fragment f = (Fragment) obj;
+    		String tag = f.getTag();
+    		mFragmentTags.put(position, tag);
+    	}
+		return obj;
+    }
 }

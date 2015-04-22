@@ -59,9 +59,7 @@ public class BottomFragment6 extends Fragment{
 		args.putString("title", title);
     	args.putInt("int", page);
     	
-		
 		fragment.setArguments(args);
-		
 		return fragment;
 	}
 	
