@@ -6,8 +6,8 @@ import tools.HorizontalLayout;
 import tools.MissingTeethAdapter;
 import tools.Patient;
 import tools.Tooth;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +39,7 @@ public class BottomFragment1 extends Fragment {
 		
 		MissingTeethAdapter bottomAdapter = new MissingTeethAdapter(getActivity(), R.layout.missing_teeth_layout, bottom, 1);
 		bottomList.generateLayout(bottomAdapter);
-
+		
 		return view;
 	}
 

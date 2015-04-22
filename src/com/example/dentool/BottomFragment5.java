@@ -38,6 +38,7 @@ public class BottomFragment5 extends Fragment{
 		
 		RootTeethAdapter bottomAdapter = new RootTeethAdapter(getActivity(), R.layout.roots_layout, bottom, 1);
 		bottomList.generateLayout(bottomAdapter);
+				
     	return view;
     }
     

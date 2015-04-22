@@ -38,6 +38,7 @@ public class BottomFragment6 extends Fragment{
 		
 		ImplantsAdapter bottomAdapter = new ImplantsAdapter(getActivity(), R.layout.implants_layout, bottom, 1);
 		bottomList.generateLayout(bottomAdapter);
+				
     	return view;
     }
     

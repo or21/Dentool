@@ -49,7 +49,6 @@ public class BottomFragment3 extends Fragment implements OnClickListener{
 		side = 0;
 
 		sideChooser.setOnClickListener(this);
-
     	
     	return view;
     }
