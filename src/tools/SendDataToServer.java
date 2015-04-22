@@ -10,31 +10,33 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.example.dentool.Main;
 import com.example.dentool.NewPatient;
 
 public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 
-	private static final String HOST = "http://10.10.1.25:5000";
+	private static final String HOST = "http://10.100.102.6:5000";
 	private final String urlUploadFile = HOST + "/upload_file/";
 	private final String urlNewSession = HOST + "/";
+	public static final int CHECK_IF_EXISTS = 1;
+	public static final int SEND_DATA = 0;
+
 	private String url;
 
 	private List<NameValuePair> requestParams;
 	private InputStream is;
 	private String line;
 	private String json;
-	private String firstName;
-	private String lastName;
-	private NewPatient newPatientActivity;
+	private Activity fromActivity;
 	private int requestType;
 
 	private ProgressDialog progress;
@@ -53,39 +55,27 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 	 * 					ignored if requestType == 1
 	 * 	activity - caller activity instance
 	 */
-	public SendDataToServer(int requestType, String patientId, String firstName,
-			String lastName, List<NameValuePair> params, NewPatient activity) {
+	public SendDataToServer(int requestType, String patientId, List<NameValuePair> params, Activity activity) {
 		// Set empty firstName and lastName if non are given
-		if (firstName == null) {
-			this.firstName = "";
-		} else {
-			this.firstName = firstName;
-		}
-
-		if (lastName == null) {
-			this.lastName = "";
-		} else {
-			this.lastName = lastName;
-		}		
 
 		if (requestType == 0) {
 			url = urlUploadFile + patientId;
 		} else if (requestType == 1) {
 			// TODO: Add some test to ensure no empty first and last name are given?
-			url = urlNewSession + patientId + "?first_name=" + this.firstName + "&last_name=" + this.lastName;
+			url = urlNewSession + patientId;
 		}
 
-		this.newPatientActivity = activity;
+		this.fromActivity = activity;
 		this.requestParams = params;
 		this.requestType = requestType;
-		this.progress = new ProgressDialog(newPatientActivity.getApplicationContext());
+		this.progress = new ProgressDialog(fromActivity.getApplicationContext());
 	}
 
 	@Override
 	protected void onPreExecute() {
 		try {
 			// TODO: Finish circle
-			progress = ProgressDialog.show(newPatientActivity.getApplicationContext(), "", "Server request in progress", true);
+			progress = ProgressDialog.show(fromActivity.getApplicationContext(), "", "Server request in progress", true);
 		} catch (Exception e)
 		{}
 	}
@@ -95,10 +85,17 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 		Boolean requestStatus = false;
 		try {
 			HttpResponse httpResponse;
-
 			HttpPost httpPost = new HttpPost(url);
-			httpPost.setEntity(new UrlEncodedFormEntity(requestParams, "utf-8"));
-
+			if (url.startsWith(urlUploadFile)) {
+				Log.i("SendDataToServer","EnteredURLUploadFile");
+				httpPost.setHeader("Accept","application/json");
+				httpPost.setHeader("Content-Type","application/json");
+				Log.i("SendDataToServer", Patient.getTeethData().toString());
+				httpPost.setEntity(new StringEntity(Patient.getTeethData().toString()));
+				
+			} else { 
+				httpPost.setEntity(new UrlEncodedFormEntity(requestParams, "utf-8"));
+			}
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 
 			// Execute the request
@@ -107,7 +104,7 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 			// Get the server response
 			HttpEntity httpEntity = httpResponse.getEntity();
 			is = httpEntity.getContent();
-
+			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "utf-8"), 8);
 			StringBuilder sb = new StringBuilder();
 			line = reader.readLine();
@@ -118,19 +115,18 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 			is.close();
 
 			json = sb.toString();
-			/*if (json.length() > 0)
+			if (json.length() > 0)
 				jsonArray = new JSONArray(json);
 
 
 			int status = httpResponse.getStatusLine().getStatusCode();
 			if (status == 200) {
 				requestStatus = true;
-			}*/			
+			}		
 		} catch (Exception e) {
 			Log.d("DenTool", "Request failed");
 			e.printStackTrace();
 		}
-//		Log.d("", msg)
 		return requestStatus;
 	}
 
@@ -144,21 +140,25 @@ public class SendDataToServer extends AsyncTask<Void, Void, Boolean>{
 	protected void onPostExecute(Boolean requestStatus) {
 		if (requestStatus && requestType == 1) {
 			if (jsonArray != null) {
-				newPatientActivity.setAlreadyVisited(true);
+				((NewPatient) fromActivity).setAlreadyVisited(true);
 				//				newPatientActivity.populateTeethArray(jsonArray);
 			} else {
-				newPatientActivity.setAlreadyVisited(false);
+				((NewPatient) fromActivity).setAlreadyVisited(false);
 			}
 		}
-		newPatientActivity.runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				if (progress.isShowing()) {
-					progress.dismiss();
+		if (requestStatus && requestType == 1) {
+			fromActivity.runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					if (progress.isShowing()) {
+						progress.dismiss();
+					}
+					Log.d("Entering the if", "HI HI");
+					((NewPatient) fromActivity).postExecute(jsonArray);
 				}
-				Log.d("Entering the if", "HI HI");
-				newPatientActivity.postExecute();
-			}
-		});
+			});
+		} else {
+			Toast.makeText(fromActivity, "WORKING", Toast.LENGTH_SHORT).show();
+		}
 	}
 }

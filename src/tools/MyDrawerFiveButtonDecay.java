@@ -2,6 +2,7 @@ package tools;
 
 import com.example.dentool.NewPatient;
 
+import android.R;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,6 +13,15 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class MyDrawerFiveButtonDecay extends View {
+
+	private Paint top, right, left, bottom, border, inner;
+	int mRadius = 100;
+	final String orange = "#f99d11";
+	final int WHITE = Color.WHITE;
+	final int ORANGE = Color.parseColor(orange);
+	int[] initalColors = new int[5];
+	Boolean[] status;
+	private int index;
 
 	public MyDrawerFiveButtonDecay(Context context, AttributeSet attrs,
 			int defStyleAttr) {
@@ -33,17 +43,53 @@ public class MyDrawerFiveButtonDecay extends View {
 	public MyDrawerFiveButtonDecay(Context context, int i) {
 		super(context);
 		this.index = i;
-		initPaint();
+		if (NewPatient.patient.getTeeth()[index].getExisting()) {
+			initPaint();
+		}
+		else {
+			initPaintWithoutTooth();
+		}
 	}
 
-	private Paint top, right, left, bottom, border, inner;
-	int mRadius = 100;
-	final String orange = "#f99d11";
-	final int WHITE = Color.WHITE;
-	final int ORANGE = Color.parseColor(orange);
-	int[] initalColors = new int[5];
-	Boolean[] status;
-	private int index;
+	private void initPaintWithoutTooth() {
+		top = new Paint();
+		right = new Paint();
+		border = new Paint();
+		left = new Paint();
+		bottom = new Paint();
+		inner = new Paint();
+		
+		int color = R.color.holo_blue_light;
+		
+		top.setColor(color);
+		top.setStrokeWidth(mRadius/1.35f);
+        top.setAntiAlias(true);
+        top.setStyle(Paint.Style.STROKE);
+        
+        right.setColor(color);
+        right.setStrokeWidth(mRadius/1.35f);
+        right.setAntiAlias(true);
+        right.setStyle(Paint.Style.STROKE);
+        
+        left.setColor(color);
+        left.setStrokeWidth(mRadius/1.35f);
+        left.setAntiAlias(true);
+        left.setStyle(Paint.Style.STROKE);
+        
+        bottom.setColor(color);
+        bottom.setStrokeWidth(mRadius/1.35f);
+        bottom.setAntiAlias(true);
+        bottom.setStyle(Paint.Style.STROKE);
+        
+        border.setColor(color);
+        border.setStrokeWidth(mRadius/1.35f + 10);
+        border.setAntiAlias(true);
+        border.setStyle(Paint.Style.STROKE);
+        
+        inner.setColor(color);
+        inner.setStyle(Paint.Style.FILL);
+        
+	}
 	
 	private void initPaint() {
 		top = new Paint();
@@ -197,7 +243,6 @@ public class MyDrawerFiveButtonDecay extends View {
         canvas.drawArc(rect, 135, 90, false, left);
         canvas.drawArc(rect, 225, 90, false, top);
         canvas.drawArc(rect, 315, 90, false, right);
-
 	}
 	
 	private double pitagoras(float x, float y, float centerX, float centerY){

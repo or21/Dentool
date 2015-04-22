@@ -2,7 +2,6 @@ package com.example.dentool;
 
 import java.util.ArrayList;
 
-import tools.CrownTeethAdapter;
 import tools.HorizontalLayout;
 import tools.RootTeethAdapter;
 import tools.Tooth;

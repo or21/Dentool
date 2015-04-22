@@ -50,7 +50,13 @@ public class MissingTeethAdapter extends ArrayAdapter<Tooth>{
 	            viewHolder = new ViewHolder();
 	            
 	            viewHolder.tb1 = (ToggleButton) convertView.findViewById(R.id.tb1_missing);
-	            viewHolder.tb1.setBackgroundResource(CrownTeethAdapter.nullArray[newpos]);
+	            if (NewPatient.patient.getTeeth()[position].getExisting()) {
+					viewHolder.tb1.setBackgroundResource(CrownTeethAdapter.nullArray[newpos]);
+					viewHolder.tb1.setHeight(1);
+	        	} else {
+	        		viewHolder.tb1.setBackgroundResource(Color.TRANSPARENT);
+	        		viewHolder.tb1.setHeight(R.id.top_mouth);
+	        	}
 	            viewHolder.tb1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 					
 					@Override

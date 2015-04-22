@@ -6,6 +6,7 @@ import tools.Tooth.State;
 
 import com.example.dentool.NewPatient;
 
+import android.R;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,6 +23,23 @@ import android.widget.Toast;
 public class MyDrawerFiveButtonFillings extends View {
 
 	private Context context;
+
+	private Paint top, right, left, bottom, border, inner;
+	int mRadius = 100;
+	final String blue = "#056faa";
+	final String lightBlue = "#b1ecfc";
+	final String brown = "#bf6102";
+	final int WHITE = Color.WHITE;
+	final int BLUE = Color.parseColor(blue);
+	final int LIGHTBLUE = Color.parseColor(lightBlue);
+	final int BROWN = Color.parseColor(brown);
+	HashMap<Integer,Integer> map = new HashMap<Integer, Integer>();
+	State[] status;
+	State[] enumList = {State.NULL,State.EXISTING,State.DEFECTIVE,State.NOTURGENT};
+	String[] items = {"NULL", "EXISTING", "DEFECTIVE", "NOT URGENT"};
+	private int index;
+	int afterChoose;
+	private int[] initalColors = new int[5];
 
 	public MyDrawerFiveButtonFillings(Context context, AttributeSet attrs,
 			int defStyleAttr) {
@@ -47,26 +65,54 @@ public class MyDrawerFiveButtonFillings extends View {
 		super(context);
 		this.context = context;
 		this.index = i;
-		initPaint();
+		if (NewPatient.patient.getTeeth()[index].getExisting()) {
+			initPaint();
+		}
+		else {
+			initPaintWithoutTooth();
+		}
 	}
 
-	private Paint top, right, left, bottom, border, inner;
-	int mRadius = 100;
-	final String blue = "#056faa";
-	final String lightBlue = "#b1ecfc";
-	final String brown = "#bf6102";
-	final int WHITE = Color.WHITE;
-	final int BLUE = Color.parseColor(blue);
-	final int LIGHTBLUE = Color.parseColor(lightBlue);
-	final int BROWN = Color.parseColor(brown);
-	HashMap<Integer,Integer> map = new HashMap<Integer, Integer>();
-	State[] status;
-	State[] enumList = {State.NULL,State.EXISTING,State.DEFECTIVE,State.NOTURGENT};
-	String[] items = {"NULL", "EXISTING", "DEFECTIVE", "NOT URGENT"};
-	private int index;
-	int afterChoose;
-	private int[] initalColors = new int[5];
-	
+	private void initPaintWithoutTooth() {
+		top = new Paint();
+		right = new Paint();
+		border = new Paint();
+		
+		left = new Paint();
+		bottom = new Paint();
+		inner = new Paint();
+		
+		int color = R.color.holo_blue_light;
+		
+		top.setColor(color);
+		top.setStrokeWidth(mRadius/1.35f);
+        top.setAntiAlias(true);
+        top.setStyle(Paint.Style.STROKE);
+        
+        right.setColor(color);
+        right.setStrokeWidth(mRadius/1.35f);
+        right.setAntiAlias(true);
+        right.setStyle(Paint.Style.STROKE);
+        
+        left.setColor(color);
+        left.setStrokeWidth(mRadius/1.35f);
+        left.setAntiAlias(true);
+        left.setStyle(Paint.Style.STROKE);
+        
+        bottom.setColor(color);
+        bottom.setStrokeWidth(mRadius/1.35f);
+        bottom.setAntiAlias(true);
+        bottom.setStyle(Paint.Style.STROKE);
+        
+        border.setColor(color);
+        border.setStrokeWidth(mRadius/1.35f + 10);
+        border.setAntiAlias(true);
+        border.setStyle(Paint.Style.STROKE);
+        
+        inner.setColor(color);
+        inner.setStyle(Paint.Style.FILL);
+	}
+
 	private void initPaint() {
 		map.put(0, WHITE);
 		map.put(1, BLUE);
@@ -82,13 +128,14 @@ public class MyDrawerFiveButtonFillings extends View {
 		
 		// init the state from the tooth object
 		for (int i = 0; i < 5; i++) {
-			if (NewPatient.patient.getTeeth()[index].getFillings()[i].equals(enumList[0])) {
+			State currState = NewPatient.patient.getTeeth()[index].getFillings()[i];
+			if (currState.equals(enumList[0])) {
 				initalColors[i] = WHITE;
-			} else 	if (NewPatient.patient.getTeeth()[index].getFillings()[i].equals(enumList[1])) {
+			} else 	if (currState.equals(enumList[1])) {
 				initalColors[i] = BLUE;
-			} else 	if (NewPatient.patient.getTeeth()[index].getFillings()[i].equals(enumList[2])) {
+			} else 	if (currState.equals(enumList[2])) {
 				initalColors[i] = BROWN;
-			} else 	if (NewPatient.patient.getTeeth()[index].getFillings()[i].equals(enumList[3])) {
+			} else 	if (currState.equals(enumList[3])) {
 				initalColors[i] = LIGHTBLUE;
 			}
 				

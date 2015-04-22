@@ -92,7 +92,20 @@ public class CrownTeethAdapter extends ArrayAdapter<Tooth>{
 			viewHolder = new ViewHolder();
 
 			viewHolder.tb1 = (ToggleButton) convertView.findViewById(R.id.tb1);
-			viewHolder.tb1.setBackgroundResource(nullArray[newpos]);
+			
+			State currState = NewPatient.patient.getTeeth()[position].getCrowns();
+			if(currState.equals(State.NULL)) {
+				viewHolder.tb1.setBackgroundResource(nullArray[newpos]);
+			}
+			else if(currState.equals(State.DEFECTIVE)) {
+				viewHolder.tb1.setBackgroundResource(damage[newpos]);
+			} 
+			else if(currState.equals(State.EXISTING)) {
+				viewHolder.tb1.setBackgroundResource(fix[newpos]);
+			}
+			else if(currState.equals(State.NOTURGENT)) {
+				viewHolder.tb1.setBackgroundResource(fixAndDamage[newpos]);
+			}
 
 			viewHolder.tb1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 				private String[] items = {"NULL", "EXISTING", "DEFECTIVE", "NOT URGENT"};

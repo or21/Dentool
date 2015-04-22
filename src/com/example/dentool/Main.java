@@ -1,5 +1,10 @@
 package com.example.dentool;
 
+import java.util.ArrayList;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 import tools.SendDataToServer;
 import android.app.ActionBar;
 import android.content.Context;
@@ -68,6 +73,12 @@ public class Main extends FragmentActivity {
 
 	private void sendFiles() {
 		Toast.makeText(context, "Sending data...", Toast.LENGTH_LONG).show();
-//		new SendDataToServer(requestType, patientId, firstName, lastName, params, activity).execute(null);
+		
+		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("first_name", NewPatient.patient.getFirstName()));
+		params.add(new BasicNameValuePair("last_name", NewPatient.patient.getLastName()));
+		new SendDataToServer(SendDataToServer.SEND_DATA, NewPatient.patient.getUid(), params, this).execute();
+		
+//		new SendDataToServer(requestType, patientId, params, activity).execute(null);
 	}
 }
