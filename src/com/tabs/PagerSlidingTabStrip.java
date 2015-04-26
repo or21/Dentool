@@ -12,7 +12,6 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
@@ -372,7 +371,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 			
 			Fragment f = ((TabsPagerAdapter) pager.getAdapter()).getFragmet(position);
 			
-			if (position == 1 && f != null) {
+			if (f != null) {
 				f.onResume();
 			}
 			

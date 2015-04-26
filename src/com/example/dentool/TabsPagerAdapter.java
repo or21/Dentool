@@ -3,6 +3,7 @@ package com.example.dentool;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -93,8 +94,13 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     }
     
     @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
+    
+    @Override
     public Object instantiateItem(View container, int position) {
-    	Object obj =  super.instantiateItem(container, position);
+    	Object obj =  instantiateItem(container, position);
     	if (obj instanceof Fragment) {
     		Fragment f = (Fragment) obj;
     		String tag = f.getTag();

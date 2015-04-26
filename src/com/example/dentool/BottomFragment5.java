@@ -65,7 +65,6 @@ public class BottomFragment5 extends Fragment{
 		
 		args.putString("title", title);
     	args.putInt("int", page);
-    	
 		
 		fragment.setArguments(args);
 		

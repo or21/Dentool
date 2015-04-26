@@ -37,14 +37,14 @@ public class ImplantsAdapter extends ArrayAdapter<Tooth>{
 		}
 	}
 	
-	private int[] damage = {R.drawable.dental_implants__damage_18, R.drawable.dental_implants__damage_17, R.drawable.dental_implants__damage_16,
-			R.drawable.dental_implants__damage_15, R.drawable.dental_implants__damage_14, R.drawable.dental_implants__damage_13, R.drawable.dental_implants__damage_12,
-			R.drawable.dental_implants__damage_11, R.drawable.dental_implants__damage_21, R.drawable.dental_implants__damage_22, R.drawable.dental_implants__damage_23,
-			R.drawable.dental_implants__damage_24, R.drawable.dental_implants__damage_25, R.drawable.dental_implants__damage_26, R.drawable.dental_implants__damage_27, R.drawable.dental_implants__damage_28,
-			R.drawable.dental_implants_damage_48, R.drawable.dental_implants__damage_47, R.drawable.dental_implants__damage_46, R.drawable.dental_implants__damage_45, R.drawable.dental_implants__damage_44,
-			R.drawable.dental_implants__damage_43, R.drawable.dental_implants__damage_42, R.drawable.dental_implants__damage_41, R.drawable.dental_implants__damage_31, R.drawable.dental_implants__damage_32,
-			R.drawable.dental_implants__damage_33, R.drawable.dental_implants__damage_34, R.drawable.dental_implants__damage_35, R.drawable.dental_implants__damage_36,
-			R.drawable.dental_implants__damage_37, R.drawable.dental_implants__damage_38 };
+	private int[] damage = {R.drawable.dental_implants_damage_18, R.drawable.dental_implants_damage_17, R.drawable.dental_implants_damage_16,
+			R.drawable.dental_implants_damage_15, R.drawable.dental_implants_damage_14, R.drawable.dental_implants_damage_13, R.drawable.dental_implants_damage_12,
+			R.drawable.dental_implants_damage_11, R.drawable.dental_implants_damage_21, R.drawable.dental_implants_damage_22, R.drawable.dental_implants_damage_23,
+			R.drawable.dental_implants_damage_24, R.drawable.dental_implants_damage_25, R.drawable.dental_implants_damage_26, R.drawable.dental_implants_damage_27, R.drawable.dental_implants_damage_28,
+			R.drawable.dental_implants_damage_48, R.drawable.dental_implants_damage_47, R.drawable.dental_implants_damage_46, R.drawable.dental_implants_damage_45, R.drawable.dental_implants_damage_44,
+			R.drawable.dental_implants_damage_43, R.drawable.dental_implants_damage_42, R.drawable.dental_implants_damage_41, R.drawable.dental_implants_damage_31, R.drawable.dental_implants_damage_32,
+			R.drawable.dental_implants_damage_33, R.drawable.dental_implants_damage_34, R.drawable.dental_implants_damage_35, R.drawable.dental_implants_damage_36,
+			R.drawable.dental_implants_damage_37, R.drawable.dental_implants_damage_38 };
 	private int[] fix = {R.drawable.dental_implants_fix_18, R.drawable.dental_implants_fix_17, R.drawable.dental_implants_fix_16, R.drawable.dental_implants_fix_15, R.drawable.dental_implants_fix_14,
 			R.drawable.dental_implants_fix_13, R.drawable.dental_implants_fix_12, R.drawable.dental_implants_fix_11, R.drawable.dental_implants_fix_21, R.drawable.dental_implants_fix_22, R.drawable.dental_implants_fix_23,
 			R.drawable.dental_implants_fix_24, R.drawable.dental_implants_fix_25, R.drawable.dental_implants_fix_26, R.drawable.dental_implants_fix_27, R.drawable.dental_implants_fix_28, R.drawable.dental_implants_fix_48,
